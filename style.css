@@ -1276,6 +1276,20 @@ img { max-width: 100%; }
   width: 70px;
 }
 
+/* ===== FLAG IMAGES ===== */
+.flag-img {
+  width: 24px;
+  height: 16px;
+  max-width: 24px;
+  object-fit: cover;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-right: 0.35rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
 /* ===== DARK / LIGHT MODE ===== */
 body.light {
   --bg:         #f4f6f9;
