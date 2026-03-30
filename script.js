@@ -192,6 +192,14 @@ if (startQuizBtn) {
       <div><strong>${quizQuestions.length - score}</strong> Wrong</div>
       <div><strong>${Math.round(pct * 100)}%</strong> Score</div>
     `;
+    if (typeof gtag === 'function') {
+      gtag('event', 'quiz_complete', {
+        'score': score,
+        'total': quizQuestions.length,
+        'percentage': Math.round(pct * 100),
+        'result': title
+      });
+    }
   }
 
   startQuizBtn.addEventListener('click', () => {
