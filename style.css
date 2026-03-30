@@ -1867,12 +1867,15 @@ body.light .nav-links a.active { color: var(--yellow); }
   z-index: 100;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
-  background: var(--bg, #fff);
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-  padding: 0.6rem 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  width: 100%;
+  background: var(--bg, #111);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 0.7rem 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  box-sizing: border-box;
 }
 
 .jump-nav a {
