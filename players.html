@@ -43,17 +43,20 @@
     </div>
   </div>
 
-  <!-- PAGE HERO -->
-  <section class="page-hero">
-    <div class="page-hero-content">
-      <span class="section-tag">Rankings & Profiles</span>
-      <h1>The Players</h1>
-      <p>From the legends who shaped the sport to the stars dominating today.</p>
-    </div>
-  </section>
+  <!-- BACKGROUND ANIMATION -->
+  <canvas id="tennisBg" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.35;"></canvas>
+
+  <!-- JUMP NAV -->
+  <nav class="jump-nav" id="jumpNav">
+    <a href="#atp-rankings">Men's Top 10</a>
+    <a href="#wta-rankings">Women's Top 10</a>
+    <a href="#legends">Legends</a>
+    <a href="#goat">G.O.A.T.</a>
+    <a href="#h2h">Head to Head</a>
+  </nav>
 
   <!-- ATP RANKINGS -->
-  <section class="section rankings-section">
+  <section class="section rankings-section" id="atp-rankings">
     <div class="section-header">
       <span class="section-tag">ATP Tour</span>
       <h2>Men's Top 10</h2>
@@ -146,7 +149,7 @@
   </section>
 
   <!-- WTA RANKINGS -->
-  <section class="section rankings-section rankings-wta">
+  <section class="section rankings-section rankings-wta" id="wta-rankings">
     <div class="section-header">
       <span class="section-tag">WTA Tour</span>
       <h2>Women's Top 10</h2>
@@ -239,7 +242,7 @@
   </section>
 
   <!-- LEGENDS -->
-  <section class="section legends-section">
+  <section class="section legends-section" id="legends">
     <div class="section-header">
       <span class="section-tag">All-Time Greats</span>
       <h2>Tennis Legends</h2>
@@ -370,7 +373,7 @@
   </section>
 
   <!-- GOAT DEBATE -->
-  <section class="section goat-section">
+  <section class="section goat-section" id="goat">
     <div class="section-header">
       <span class="section-tag">The Greatest Debate</span>
       <h2>G.O.A.T. Comparison</h2>
@@ -423,7 +426,7 @@
   </section>
 
   <!-- HEAD TO HEAD -->
-  <section class="section h2h-section">
+  <section class="section h2h-section" id="h2h">
     <div class="section-header">
       <span class="section-tag">Rivalries</span>
       <h2>Head to Head</h2>
@@ -530,6 +533,86 @@
     <img class="lightbox-img" id="lightboxImg" src="" alt="" />
   </div>
 
+  <script>
+    // Tennis background animation
+    const canvas = document.getElementById('tennisBg');
+    const ctx = canvas.getContext('2d');
+    let balls = [];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function createBall() {
+      return {
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: 14 + Math.random() * 10,
+        vx: (Math.random() - 0.5) * 2.5,
+        vy: (Math.random() - 0.5) * 2.5,
+        rotation: 0,
+        rotSpeed: (Math.random() - 0.5) * 0.08
+      };
+    }
+
+    for (let i = 0; i < 18; i++) balls.push(createBall());
+
+    function drawBall(b) {
+      ctx.save();
+      ctx.translate(b.x, b.y);
+      ctx.rotate(b.rotation);
+
+      // Ball body
+      ctx.beginPath();
+      ctx.arc(0, 0, b.r, 0, Math.PI * 2);
+      ctx.fillStyle = '#c8f025';
+      ctx.fill();
+
+      // Felt curve lines
+      ctx.strokeStyle = 'white';
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      ctx.arc(0, 0, b.r * 0.6, -0.6, 0.6);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(0, 0, b.r * 0.6, Math.PI - 0.6, Math.PI + 0.6);
+      ctx.stroke();
+
+      ctx.restore();
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      balls.forEach(b => {
+        b.x += b.vx;
+        b.y += b.vy;
+        b.rotation += b.rotSpeed;
+        if (b.x < b.r || b.x > canvas.width - b.r) b.vx *= -1;
+        if (b.y < b.r || b.y > canvas.height - b.r) b.vy *= -1;
+        drawBall(b);
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+
   <script src="script.js"></script>
+  <script>
+    // Jump nav active highlight on scroll
+    const jumpLinks = document.querySelectorAll('.jump-nav a');
+    const sections = ['atp-rankings','wta-rankings','legends','goat','h2h'].map(id => document.getElementById(id));
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (sec && window.scrollY >= sec.offsetTop - 120) current = sec.id;
+      });
+      jumpLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    }, { passive: true });
+  </script>
 </body>
 </html>
