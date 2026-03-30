@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TennisFan — Scores & Schedule</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+
+    /* ---- LIVE BANNER ---- */
+    .live-banner {
+      background: linear-gradient(135deg, #1a0a0a, #2d0a0a);
+      border-bottom: 1px solid rgba(239,68,68,0.2);
+      padding: 1.25rem 2rem;
+      text-align: center;
+    }
+
+    .live-banner-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.3rem 0.9rem;
+      background: rgba(239,68,68,0.15);
+      border: 1px solid rgba(239,68,68,0.3);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #ef4444;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .live-dot {
+      width: 8px; height: 8px;
+      background: #ef4444;
+      border-radius: 50%;
+      animation: pulse 1.4s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:0.4; transform:scale(1.4); }
+    }
+
+    .live-banner p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .live-btn-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .live-ext-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.4rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-sofascore {
+      background: #374df5;
+      color: #fff;
+    }
+    .btn-sofascore:hover { background: #2535e0; transform: translateY(-2px); }
+
+    .btn-flashscore {
+      background: #ff6600;
+      color: #fff;
+    }
+    .btn-flashscore:hover { background: #e05500; transform: translateY(-2px); }
+
+    /* ---- FILTER TABS ---- */
+    .scores-tabs {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      padding: 1.25rem 2rem;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .scores-tab {
+      padding: 0.5rem 1.25rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s;
+    }
+
+    .scores-tab:hover { background: var(--bg3); color: var(--text); }
+    .scores-tab.active { background: var(--yellow); color: #000; border-color: var(--yellow); font-weight: 700; }
+
+    /* ---- SCHEDULE TABLE ---- */
+    .schedule-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .month-group { margin-bottom: 2.5rem; }
+
+    .month-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .match-row {
+      display: grid;
+      grid-template-columns: 90px 1fr auto auto;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
+      transition: all 0.2s;
+    }
+
+    .match-row:hover {
+      border-color: rgba(255,255,255,0.15);
+      background: var(--bg3);
+    }
+
+    .match-date {
+      text-align: center;
+    }
+
+    .match-date .day {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .match-date .month-short {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .match-info h4 {
+      font-size: 0.975rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+
+    .match-info p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .match-surface {
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .s-hard  { background: rgba(29,111,196,0.15); color: #60a5fa; border: 1px solid rgba(29,111,196,0.3); }
+    .s-clay  { background: rgba(194,98,47,0.15);  color: #f97316; border: 1px solid rgba(194,98,47,0.3); }
+    .s-grass { background: rgba(45,106,79,0.15);  color: #4ade80; border: 1px solid rgba(45,106,79,0.3); }
+
+    .match-status {
+      text-align: right;
+      min-width: 80px;
+    }
+
+    .status-upcoming {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--yellow);
+    }
+
+    .status-ongoing {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #ef4444;
+    }
+
+    .status-done {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .slam-row {
+      border-left: 3px solid var(--yellow);
+    }
+
+    .grand-slam-tag {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      background: rgba(245,197,24,0.1);
+      border-radius: 4px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-left: 0.4rem;
+    }
+
+    /* Hidden rows for filtering */
+    .match-row.hidden { display: none; }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">🎾 TennisFan</a>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="players.html">Players</a></li>
+      <li><a href="tournaments.html">Tournaments</a></li>
+      <li><a href="scores.html" class="active">Scores</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="quiz.html">Quiz 🎯</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="search-btn" id="searchBtn" title="Search">&#128269;</button>
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+    </div>
+  </nav>
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search players, tournaments, news..." autocomplete="off" />
+      <button class="search-close" id="searchClose">&times;</button>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="section-tag">Live & Upcoming</span>
+      <h1>Scores & Schedule</h1>
+      <p>Full 2026 tennis calendar — every Grand Slam and major tournament.</p>
+    </div>
+  </section>
+
+  <!-- LIVE SCORES BANNER -->
+  <div class="live-banner">
+    <div class="live-banner-inner">
+      <div class="live-badge">
+        <div class="live-dot"></div>
+        Live Scores Available
+      </div>
+      <p>Click below to watch live scores, live match stats and real-time results on a dedicated platform:</p>
+      <div class="live-btn-row">
+        <a href="https://www.sofascore.com/tennis" target="_blank" rel="noopener" class="live-ext-btn btn-sofascore">
+          ⚡ SofaScore — Live Tennis
+        </a>
+        <a href="https://www.flashscore.com/tennis/" target="_blank" rel="noopener" class="live-ext-btn btn-flashscore">
+          🔴 Flashscore — Live Tennis
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILTER TABS -->
+  <div class="scores-tabs">
+    <button class="scores-tab active" data-filter="all">All Tournaments</button>
+    <button class="scores-tab" data-filter="slam">Grand Slams</button>
+    <button class="scores-tab" data-filter="atp">ATP Masters</button>
+    <button class="scores-tab" data-filter="wta">WTA 1000</button>
+  </div>
+
+  <!-- SCHEDULE -->
+  <div class="schedule-section">
+
+    <!-- JANUARY -->
+    <div class="month-group">
+      <div class="month-label">January 2026</div>
+
+      <div class="match-row slam-row" data-cat="slam">
+        <div class="match-date"><div class="day">12</div><div class="month-short">Jan</div></div>
+        <div class="match-info">
+          <h4>Australian Open <span class="grand-slam-tag">Grand Slam</span></h4>
+          <p>📍 Melbourne Park, Australia &nbsp;·&nbsp; 128 players draw</p>
+        </div>
+        <span class="match-surface s-hard">Hard</span>
+        <div class="match-status"><span class="status-upcoming">Jan 12–25</span></div>
+      </div>
+    </div>
+
+    <!-- FEBRUARY -->
+    <div class="month-group">
+      <div class="month-label">February 2026</div>
+
+      <div class="match-row" data-cat="atp">
+        <div class="match-date"><div class="day">02</div><div class="month-short">Feb</div></div>
+        <div class="match-info">
+          <h4>ABN AMRO Open — Rotterdam</h4>
+          <p>📍 Rotterdam Ahoy, Netherlands &nbsp;·&nbsp; ATP 500</p>
+        </div>
+        <span class="match-surface s-hard">Hard (Indoor)</span>
+        <div class="match-status"><span class="status-upcoming">Feb 2–8</span></div>
+      </div>
+
+      <div class="match-row" data-cat="atp">
+        <div class="match-date"><div class="day">16</div><div class="month-short">Feb</div></div>
+        <div class="match-info">
+          <h4>Argentina Open — Buenos Aires</h4>
+          <p>📍 Buenos Aires, Argentina &nbsp;·&nbsp; ATP 250</p>
+        </div>
+        <span class="match-surface s-clay">Clay</span>
+        <div class="match-status"><span class="status-upcoming">Feb 16–22</span></div>
+      </div>
+
+      <div class="match-row" data-cat="wta">
+        <div class="match-date"><div class="day">16</div><div class="month-short">Feb</div></div>
+        <div class="match-info">
+          <h4>Qatar Total Open — Doha</h4>
+          <p>📍 Doha, Qatar &nbsp;·&nbsp; WTA 1000</p>
+        </div>
+        <span class="match-surface s-hard">Hard</span>
+        <div class="match-status"><span class="status-upcoming">Feb 16–22</span></div>
+      </div>
+    </div>
+
+    <!-- MARCH -->
+    <div class="month-group">
+      <div class="month-label">March 2026</div>
+
+      <div class="match-row" data-cat="atp wta">
+        <div class="match-date"><div class="day">05</div><div class="month-short">Mar</div></div>
+        <div class="match-info">
+          <h4>BNP Paribas Open — Indian Wells</h4>
+          <p>📍 Indian Wells, California, USA &nbsp;·&nbsp; ATP / WTA Masters 1000</p>
+        </div>
+        <span class="match-surface s-hard">Hard</span>
+        <div class="match-status"><span class="status-upcoming">Mar 5–15</span></div>
+      </div>
+
+      <div class="match-row" data-cat="atp wta">
+        <div class="match-date"><div class="day">19</div><div class="month-short">Mar</div></div>
+        <div class="match-info">
+          <h4>Miami Open — Miami</h4>
+          <p>📍 Hard Rock Stadium, Miami, USA &nbsp;·&nbsp; ATP / WTA Masters 1000</p>
+        </div>
+        <span class="match-surface s-hard">Hard</span>
+        <div class="match-status"><span class="status-upcoming">Mar 19–29</span></div>
+      </div>
+    </div>
+
+    <!-- APRIL -->
+    <div class="month-group">
+      <div class="month-label">April 2026</div>
+
+      <div class="match-row" data-cat="atp wta">
+        <div class="match-date"><div class="day">06</div><div class="month-short">Apr</div></div>
+        <div class="match-info">
+          <h4>Monte-Carlo Masters</h4>
+          <p>📍 Monte Carlo, Monaco &nbsp;·&nbsp; ATP Masters 1000</p>
+        </div>
+        <span class="match-surface s-clay">Clay</span>
+        <div class="match-status"><span class="status-upcoming">Apr 6–12</span></div>
+      </div>
+
+      <div class="match-row" data-cat="atp">
+        <div class="match-date"><div class="day">14</div><div class="month-short">Apr</div></div>
+        <div class="match-info">
+          <h4>Barcelona Open Banc Sabadell</h4>
+          <p>📍 Barcelona, Spain &nbsp;·&nbsp; ATP 500</p>
+        </div>
+        <span class="match-surface s-clay">Clay</span>
+        <div class="match-status"><span class="status-upcoming">Apr 14–19</span></div>
+      </div>
+
+      <div class="match-row" data-cat="atp wta">
+        <div class="match-date"><div class="day">21</div><div class="month-short">Apr</div></div>
+        <div class="match-info">
+          <h4>Mutua Madrid Open</h4>
+          <p>📍 Madrid, Spain &nbsp;·&nbsp; ATP / WTA Masters 1000</p>
+        </div>
+        <span class="match-surface s-clay">Clay</span>
+        <div class="match-status"><span class="status-upcoming">Apr 21–May 3</span></div>
+      </div>
+    </div>
+
+    <!-- MAY -->
+    <div class="month-group">
+      <div class="month-label">May 2026</div>
+
+      <div class="match-row" data-cat="atp wta">
+        <div class="match-date"><div class="day">05</div><div class="month-short">May</div></div>
+        <div class="match-info">
+          <h4>Internazionali BNL d'Italia — Rome</h4>
+          <p>📍 Foro Italico, Rome, Italy &nbsp;·&nbsp; ATP / WTA Masters 1000</p>
+        </div>
+        <span class="match-surface s-clay">Clay</span>
+        <div class="match-status"><span class="status-upcoming">May 5–17</span></div>
+      </div>
+
+      <div class="match-row slam-row" data-cat="slam">
+        <div class="match-date"><div class="day">24</div><div class="month-short">May</div></div>
+        <div class="match-info">
+          <h4>Roland Garros <span class="grand-slam-tag">Grand Slam</span></h4>
+          <p>📍 Stade Roland Garros, Paris, France &nbsp;·&nbsp; 128 players draw</p>
+        </div>
+        <span class="match-surface s-clay">Clay</span>
+        <div class="match-status"><span class="status-upcoming">May 24–Jun 7</span></div>
+      </div>
+    </div>
+
+    <!-- JUNE -->
+    <div class="month-group">
+      <div class="month-label">June / July 2026</div>
+
+      <div class="match-row" data-cat="atp">
+        <div class="match-date"><div class="day">08</div><div class="month-short">Jun</div></div>
+        <div class="match-info">
+          <h4>Halle Open (Terra Wortmann Open)</h4>
+          <p>📍 Halle, Germany &nbsp;·&nbsp; ATP 500</p>
+        </div>
+        <span class="match-surface s-grass">Grass</span>
+        <div class="match-status"><span class="status-upcoming">Jun 8–14</span></div>
+      </div>
+
+      <div class="match-row" data-cat="atp">
+        <div class="match-date"><div class="day">08</div><div class="month-short">Jun</div></div>
+        <div class="match-info">
+          <h4>Queen's Club Championships — London</h4>
+          <p>📍 Queen's Club, London, UK &nbsp;·&nbsp; ATP 500</p>
+        </div>
+        <span class="match-surface s-grass">Grass</span>
+        <div class="match-status"><span class="status-upcoming">Jun 8–14</span></div>
+      </div>
+
+      <div class="match-row slam-row" data-cat="slam">
+        <div class="match-date"><div class="day">29</div><div class="month-short">Jun</div></div>
+        <div class="match-info">
+          <h4>Wimbledon <span class="grand-slam-tag">Grand Slam</span></h4>
+          <p>📍 The All England Club, London, UK &nbsp;·&nbsp; 128 players draw</p>
+        </div>
+        <span class="match-surface s-grass">Grass</span>
+        <div class="match-status"><span class="status-upcoming">Jun 29–Jul 12</span></div>
+      </div>
+    </div>
+
+    <!-- AUGUST / SEPTEMBER -->
+    <div class="month-group">
+      <div class="month-label">August / September 2026</div>
+
+      <div class="match-row" data-cat="atp wta">
+        <div class="match-date"><div class="day">10</div><div class="month-short">Aug</div></div>
+        <div class="match-info">
+          <h4>Western & Southern Open — Cincinnati</h4>
+          <p>📍 Cincinnati, Ohio, USA &nbsp;·&nbsp; ATP / WTA Masters 1000</p>
+        </div>
+        <span class="match-surface s-hard">Hard</span>
+        <div class="match-status"><span class="status-upcoming">Aug 10–18</span></div>
+      </div>
+
+      <div class="match-row slam-row" data-cat="slam">
+        <div class="match-date"><div class="day">24</div><div class="month-short">Aug</div></div>
+        <div class="match-info">
+          <h4>US Open <span class="grand-slam-tag">Grand Slam</span></h4>
+          <p>📍 USTA Billie Jean King National Tennis Center, New York, USA &nbsp;·&nbsp; 128 players draw</p>
+        </div>
+        <span class="match-surface s-hard">Hard</span>
+        <div class="match-status"><span class="status-upcoming">Aug 24–Sep 6</span></div>
+      </div>
+    </div>
+
+    <!-- OCTOBER / NOVEMBER -->
+    <div class="month-group">
+      <div class="month-label">October / November 2026</div>
+
+      <div class="match-row" data-cat="atp">
+        <div class="match-date"><div class="day">05</div><div class="month-short">Oct</div></div>
+        <div class="match-info">
+          <h4>China Open — Beijing</h4>
+          <p>📍 National Tennis Center, Beijing, China &nbsp;·&nbsp; ATP 500 / WTA 1000</p>
+        </div>
+        <span class="match-surface s-hard">Hard</span>
+        <div class="match-status"><span class="status-upcoming">Oct 5–12</span></div>
+      </div>
+
+      <div class="match-row" data-cat="atp wta">
+        <div class="match-date"><div class="day">05</div><div class="month-short">Oct</div></div>
+        <div class="match-info">
+          <h4>Shanghai Masters</h4>
+          <p>📍 Qizhong Forest Sports City Arena, Shanghai, China &nbsp;·&nbsp; ATP Masters 1000</p>
+        </div>
+        <span class="match-surface s-hard">Hard</span>
+        <div class="match-status"><span class="status-upcoming">Oct 5–18</span></div>
+      </div>
+
+      <div class="match-row" data-cat="atp">
+        <div class="match-date"><div class="day">26</div><div class="month-short">Oct</div></div>
+        <div class="match-info">
+          <h4>Rolex Paris Masters</h4>
+          <p>📍 Accor Arena, Paris, France &nbsp;·&nbsp; ATP Masters 1000</p>
+        </div>
+        <span class="match-surface s-hard">Hard (Indoor)</span>
+        <div class="match-status"><span class="status-upcoming">Oct 26–Nov 1</span></div>
+      </div>
+
+      <div class="match-row" data-cat="atp">
+        <div class="match-date"><div class="day">09</div><div class="month-short">Nov</div></div>
+        <div class="match-info">
+          <h4>Nitto ATP Finals</h4>
+          <p>📍 Pala Alpitour, Turin, Italy &nbsp;·&nbsp; ATP Finals (Top 8)</p>
+        </div>
+        <span class="match-surface s-hard">Hard (Indoor)</span>
+        <div class="match-status"><span class="status-upcoming">Nov 9–16</span></div>
+      </div>
+
+      <div class="match-row" data-cat="wta">
+        <div class="match-date"><div class="day">28</div><div class="month-short">Oct</div></div>
+        <div class="match-info">
+          <h4>WTA Finals</h4>
+          <p>📍 Riyadh, Saudi Arabia &nbsp;·&nbsp; WTA Finals (Top 8)</p>
+        </div>
+        <span class="match-surface s-hard">Hard (Indoor)</span>
+        <div class="match-status"><span class="status-upcoming">Oct 28–Nov 4</span></div>
+      </div>
+    </div>
+
+  </div><!-- end schedule-section -->
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo">🎾 TennisFan</span>
+        <p>Your home for everything tennis.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="players.html">Players</a>
+        <a href="tournaments.html">Tournaments</a>
+        <a href="scores.html">Scores</a>
+        <a href="news.html">News</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 TennisFan. Made with 🎾 passion.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Filter tabs
+    const tabs = document.querySelectorAll('.scores-tab');
+    const rows = document.querySelectorAll('.match-row');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filter = tab.dataset.filter;
+
+        rows.forEach(row => {
+          const cat = row.dataset.cat || '';
+          if (filter === 'all' || cat.includes(filter)) {
+            row.classList.remove('hidden');
+          } else {
+            row.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TennisFan — Tournaments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">🎾 TennisFan</a>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="players.html">Players</a></li>
+      <li><a href="tournaments.html" class="active">Tournaments</a></li>
+      <li><a href="scores.html">Scores</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="quiz.html">Quiz 🎯</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="search-btn" id="searchBtn" title="Search">&#128269;</button>
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+    </div>
+  </nav>
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search players, tournaments, news..." autocomplete="off" />
+      <button class="search-close" id="searchClose">&times;</button>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero page-hero-tournaments">
+    <div class="page-hero-content">
+      <span class="section-tag">Grand Slams & More</span>
+      <h1>Tournaments</h1>
+      <p>The biggest stages in tennis — where legends are made.</p>
+    </div>
+  </section>
+
+  <!-- 2026 CALENDAR -->
+  <section class="section calendar-section">
+    <div class="section-header">
+      <span class="section-tag">Schedule</span>
+      <h2>2026 Grand Slam Calendar</h2>
+    </div>
+    <div class="calendar-list">
+      <div class="calendar-item cal-ao">
+        <div class="cal-month">JAN</div>
+        <div class="cal-bar"></div>
+        <div class="cal-info">
+          <h3>Australian Open</h3>
+          <p class="cal-dates">January 12 – January 25, 2026</p>
+          <p>Melbourne Park, Australia · Hard Court</p>
+        </div>
+        <span class="cal-badge badge-hard">Hard</span>
+      </div>
+      <div class="calendar-item cal-rg">
+        <div class="cal-month">MAY</div>
+        <div class="cal-bar"></div>
+        <div class="cal-info">
+          <h3>Roland Garros</h3>
+          <p class="cal-dates">May 24 – June 7, 2026</p>
+          <p>Stade Roland Garros, Paris, France · Clay Court</p>
+        </div>
+        <span class="cal-badge badge-clay">Clay</span>
+      </div>
+      <div class="calendar-item cal-w">
+        <div class="cal-month">JUN</div>
+        <div class="cal-bar"></div>
+        <div class="cal-info">
+          <h3>Wimbledon</h3>
+          <p class="cal-dates">June 29 – July 12, 2026</p>
+          <p>The All England Club, London, UK · Grass Court</p>
+        </div>
+        <span class="cal-badge badge-grass">Grass</span>
+      </div>
+      <div class="calendar-item cal-uso">
+        <div class="cal-month">AUG</div>
+        <div class="cal-bar"></div>
+        <div class="cal-info">
+          <h3>US Open</h3>
+          <p class="cal-dates">August 24 – September 6, 2026</p>
+          <p>USTA Billie Jean King National Tennis Center, New York · Hard Court</p>
+        </div>
+        <span class="cal-badge badge-hard">Hard</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRAND SLAM DEEP DIVE -->
+  <section class="section slams-deep">
+    <div class="section-header">
+      <span class="section-tag">The Big Four</span>
+      <h2>Grand Slam Profiles</h2>
+    </div>
+
+    <div class="slam-profile">
+      <div class="slam-color-band band-ao"></div>
+      <div class="slam-profile-content">
+        <div class="slam-header-row">
+          <div>
+            <span class="slam-surface-tag stag-hard">Hard Court</span>
+            <h3>Australian Open</h3>
+            <p class="slam-location">📍 Melbourne Park, Melbourne, Australia</p>
+          </div>
+          <div class="slam-emblem">🏆</div>
+        </div>
+        <p>The first Grand Slam of the year, held under the summer sun of Melbourne every January. Known for its scorching heat and the famous Plexicushion surface, the Australian Open provides a fast, consistent bounce that rewards aggressive baseliners.</p>
+        <div class="slam-facts">
+          <div class="slam-fact">
+            <span class="slam-fact-label">Founded</span>
+            <span class="slam-fact-value">1905</span>
+          </div>
+          <div class="slam-fact">
+            <span class="slam-fact-label">Capacity</span>
+            <span class="slam-fact-value">15,000 (Rod Laver)</span>
+          </div>
+          <div class="slam-fact">
+            <span class="slam-fact-label">Surface</span>
+            <span class="slam-fact-value">Plexicushion (Hard)</span>
+          </div>
+          <div class="slam-fact">
+            <span class="slam-fact-label">Prize Money</span>
+            <span class="slam-fact-value">~$86M AUD</span>
+          </div>
+        </div>
+        <div class="slam-champions">
+          <h4>Recent Champions</h4>
+          <div class="champions-row">
+            <div class="champion-item"><span>2025 Men's</span><strong>J. Sinner 🇮🇹</strong></div>
+            <div class="champion-item"><span>2025 Women's</span><strong>A. Sabalenka 🇧🇾</strong></div>
+            <div class="champion-item"><span>2024 Men's</span><strong>J. Sinner 🇮🇹</strong></div>
+            <div class="champion-item"><span>2024 Women's</span><strong>A. Sabalenka 🇧🇾</strong></div>
+          </div>
+          <button class="btn btn-outline champions-btn" data-slam="ao">🏆 View All Champions</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="slam-profile">
+      <div class="slam-color-band band-rg"></div>
+      <div class="slam-profile-content">
+        <div class="slam-header-row">
+          <div>
+            <span class="slam-surface-tag stag-clay">Clay Court</span>
+            <h3>Roland Garros</h3>
+            <p class="slam-location">📍 Stade Roland Garros, Paris, France</p>
+          </div>
+          <div class="slam-emblem">🏆</div>
+        </div>
+        <p>The French Open is the most physically demanding Grand Slam. Played on red crushed brick clay, the surface slows the ball down significantly, creating long, grueling rallies. It demands supreme fitness, mental toughness, and heavy topspin. Rafael Nadal's 14 titles here remain one of the most incredible records in sport.</p>
+        <div class="slam-facts">
+          <div class="slam-fact">
+            <span class="slam-fact-label">Founded</span>
+            <span class="slam-fact-value">1891</span>
+          </div>
+          <div class="slam-fact">
+            <span class="slam-fact-label">Capacity</span>
+            <span class="slam-fact-value">15,059 (Phillipe-Chatrier)</span>
+          </div>
+          <div class="slam-fact">
+            <span class="slam-fact-label">Surface</span>
+            <span class="slam-fact-value">Red Clay</span>
+          </div>
+          <div class="slam-fact">
+            <span class="slam-fact-label">Prize Money</span>
+            <span class="slam-fact-value">~€53M</span>
+          </div>
+        </div>
+        <div class="slam-champions">
+          <h4>Recent Champions</h4>
+          <div class="champions-row">
+            <div class="champion-item"><span>2024 Men's</span><strong>C. Alcaraz 🇪🇸</strong></div>
+            <div class="champion-item"><span>2024 Women's</span><strong>I. Swiatek 🇵🇱</strong></div>
+            <div class="champion-item"><span>2023 Men's</span><strong>N. Djokovic 🇷🇸</strong></div>
+            <div class="champion-item"><span>2023 Women's</span><strong>I. Swiatek 🇵🇱</strong></div>
+          </div>
+          <button class="btn btn-outline champions-btn" data-slam="rg">🏆 View All Champions</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="slam-profile">
+      <div class="slam-color-band band-w"></div>
+      <div class="slam-profile-content">
+        <div class="slam-header-row">
+          <div>
+            <span class="slam-surface-tag stag-grass">Grass Court</span>
+            <h3>Wimbledon</h3>
+            <p class="slam-location">📍 The All England Club, London, United Kingdom</p>
+          </div>
+          <div class="slam-emblem">🏆</div>
+        </div>
+        <p>The oldest and most prestigious Grand Slam in tennis. Founded in 1877, Wimbledon is synonymous with tradition — white clothing, strawberries and cream, and the reverence of the Royal Box. The natural grass surface produces fast, low bounces, making it the ultimate test for serve-and-volley specialists.</p>
+        <div class="slam-facts">
+          <div class="slam-fact">
+            <span class="slam-fact-label">Founded</span>
+            <span class="slam-fact-value">1877</span>
+          </div>
+          <div class="slam-fact">
+            <span class="slam-fact-label">Capacity</span>
+            <span class="slam-fact-value">15,000 (Centre Court)</span>
+          </div>
+          <div class="slam-fact">
+            <span class="slam-fact-label">Surface</span>
+            <span class="slam-fact-value">Ryegrass</span>
+          </div>
+          <div class="slam-fact">
+            <span class="slam-fact-label">Prize Money</span>
+            <span class="slam-fact-value">~£50M</span>
+          </div>
+        </div>
+        <div class="slam-champions">
+          <h4>Recent Champions</h4>
+          <div class="champions-row">
+            <div class="champion-item"><span>2024 Men's</span><strong>C. Alcaraz 🇪🇸</strong></div>
+            <div class="champion-item"><span>2024 Women's</span><strong>B. Krejcikova 🇨🇿</strong></div>
+            <div class="champion-item"><span>2023 Men's</span><strong>C. Alcaraz 🇪🇸</strong></div>
+            <div class="champion-item"><span>2023 Women's</span><strong>M. Vondrousova 🇨🇿</strong></div>
+          </div>
+          <button class="btn btn-outline champions-btn" data-slam="w">🏆 View All Champions</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="slam-profile">
+      <div class="slam-color-band band-uso"></div>
+      <div class="slam-profile-content">
+        <div class="slam-header-row">
+          <div>
+            <span class="slam-surface-tag stag-hard">Hard Court</span>
+            <h3>US Open</h3>
+            <p class="slam-location">📍 USTA Billie Jean King National Tennis Center, New York, USA</p>
+          </div>
+          <div class="slam-emblem">🏆</div>
+        </div>
+        <p>The final Grand Slam of the year, played under the lights of New York City. The US Open is famous for its electric, vocal crowd and its fast DecoTurf hard court surface. Night sessions under the Arthur Ashe Stadium lights are among the most iconic moments in all of tennis.</p>
+        <div class="slam-facts">
+          <div class="slam-fact">
+            <span class="slam-fact-label">Founded</span>
+            <span class="slam-fact-value">1881</span>
+          </div>
+          <div class="slam-fact">
+            <span class="slam-fact-label">Capacity</span>
+            <span class="slam-fact-value">23,771 (Arthur Ashe)</span>
+          </div>
+          <div class="slam-fact">
+            <span class="slam-fact-label">Surface</span>
+            <span class="slam-fact-value">DecoTurf (Hard)</span>
+          </div>
+          <div class="slam-fact">
+            <span class="slam-fact-label">Prize Money</span>
+            <span class="slam-fact-value">~$75M USD</span>
+          </div>
+        </div>
+        <div class="slam-champions">
+          <h4>Recent Champions</h4>
+          <div class="champions-row">
+            <div class="champion-item"><span>2024 Men's</span><strong>J. Sinner 🇮🇹</strong></div>
+            <div class="champion-item"><span>2024 Women's</span><strong>A. Sabalenka 🇧🇾</strong></div>
+            <div class="champion-item"><span>2023 Men's</span><strong>N. Djokovic 🇷🇸</strong></div>
+            <div class="champion-item"><span>2023 Women's</span><strong>C. Gauff 🇺🇸</strong></div>
+          </div>
+          <button class="btn btn-outline champions-btn" data-slam="uso">🏆 View All Champions</button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo">🎾 TennisFan</span>
+        <p>Your home for everything tennis.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="players.html">Players</a>
+        <a href="tournaments.html">Tournaments</a>
+        <a href="news.html">News</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 TennisFan. Made with 🎾 passion.</p>
+    </div>
+  </footer>
+
+  <!-- CHAMPIONS MODAL -->
+  <div class="champ-modal-overlay" id="champModal">
+    <div class="champ-modal">
+      <div class="champ-modal-header">
+        <h2 id="champModalTitle"></h2>
+        <button class="champ-modal-close" id="champModalClose">&times;</button>
+      </div>
+      <div class="champ-modal-body">
+        <table class="champ-table">
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Men's Champion</th>
+              <th>Women's Champion</th>
+            </tr>
+          </thead>
+          <tbody id="champTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

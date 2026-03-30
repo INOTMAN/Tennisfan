@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TennisFan — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">🎾 TennisFan</a>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="players.html">Players</a></li>
+      <li><a href="tournaments.html">Tournaments</a></li>
+      <li><a href="scores.html">Scores</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="quiz.html">Quiz 🎯</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="search-btn" id="searchBtn" title="Search">&#128269;</button>
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+    </div>
+  </nav>
+  <!-- SEARCH OVERLAY -->
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search players, tournaments, news..." autocomplete="off" />
+      <button class="search-close" id="searchClose">&times;</button>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="https://assets.mixkit.co/videos/880/880-1080.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="court-lines">
+      <div class="court-line line-center"></div>
+      <div class="court-line line-service-left"></div>
+      <div class="court-line line-service-right"></div>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-welcome">Welcome to <span class="highlight">TennisFan</span></h1>
+    </div>
+    <div class="hero-ball">🎾</div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="stats-bar">
+    <div class="stat">
+      <span class="stat-number" data-target="4">0</span>
+      <span class="stat-label">Grand Slams</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number" data-target="200">0</span>
+      <span class="stat-label">Countries</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number" data-target="128">0</span>
+      <span class="stat-label">Slam Draw Size</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number" data-target="1872">0</span>
+      <span class="stat-label">Year Tennis Was Born</span>
+    </div>
+  </section>
+
+  <!-- SURFACES -->
+  <section class="section surfaces-section">
+    <div class="section-header">
+      <span class="section-tag">The Game</span>
+      <h2>Four Surfaces. Four Stories.</h2>
+      <p>Each surface demands a completely different style of play.</p>
+    </div>
+    <div class="surfaces-grid">
+      <div class="surface-card surface-hard">
+        <img class="surface-img" src="tennis first page pictures/melbourne.webp" alt="Melbourne Hard Court" />
+        <div class="surface-info">
+          <h3>Hard Court</h3>
+          <p>Fast, consistent bounce. Favors big servers and all-round players. Used at the Australian Open and US Open.</p>
+          <span class="surface-tag">Australian Open · US Open</span>
+        </div>
+      </div>
+      <div class="surface-card surface-clay">
+        <img class="surface-img" src="tennis first page pictures/french open.avif" alt="French Open Clay Court" />
+        <div class="surface-info">
+          <h3>Clay Court</h3>
+          <p>Slow, high bounce. Rewards baseliners and endurance. The ultimate test of physical and mental strength.</p>
+          <span class="surface-tag">Roland Garros</span>
+        </div>
+      </div>
+      <div class="surface-card surface-grass">
+        <img class="surface-img" src="tennis first page pictures/wimbledon.jpg" alt="Wimbledon Grass Court" />
+        <div class="surface-info">
+          <h3>Grass Court</h3>
+          <p>Fast, low bounce. Serve-and-volley paradise. The most traditional and prestigious surface in tennis.</p>
+          <span class="surface-tag">Wimbledon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PLAYERS -->
+  <section class="section featured-section">
+    <div class="section-header">
+      <span class="section-tag">Today's Game</span>
+      <h2>Stars of the Modern Era</h2>
+      <p>The players dominating the courts right now.</p>
+    </div>
+    <div class="featured-grid">
+      <div class="featured-card">
+        <div class="player-avatar av-alcaraz">CA</div>
+        <div class="player-info">
+          <span class="rank-badge">#1 ATP</span>
+          <h3>Carlos Alcaraz</h3>
+          <p>🇪🇸 Spain · All-Surface Wizard</p>
+        </div>
+      </div>
+      <div class="featured-card">
+        <div class="player-avatar av-sinner">JS</div>
+        <div class="player-info">
+          <span class="rank-badge">#2 ATP</span>
+          <h3>Jannik Sinner</h3>
+          <p>🇮🇹 Italy · Hard Court Specialist</p>
+        </div>
+      </div>
+      <div class="featured-card">
+        <div class="player-avatar av-sabalenka">AS</div>
+        <div class="player-info">
+          <span class="rank-badge">#1 WTA</span>
+          <h3>Aryna Sabalenka</h3>
+          <p>🇧🇾 Belarus · Power Baseline Queen</p>
+        </div>
+      </div>
+      <div class="featured-card">
+        <div class="player-avatar av-swiatek">IS</div>
+        <div class="player-info">
+          <span class="rank-badge">#2 WTA</span>
+          <h3>Iga Swiatek</h3>
+          <p>🇵🇱 Poland · Queen of Clay</p>
+        </div>
+      </div>
+    </div>
+    <div class="center-btn">
+      <a href="players.html" class="btn btn-primary">View All Players →</a>
+    </div>
+  </section>
+
+  <!-- NEWS PREVIEW -->
+  <section class="section news-preview-section">
+    <div class="section-header">
+      <span class="section-tag">Latest</span>
+      <h2>Tennis News</h2>
+    </div>
+    <div class="news-grid">
+      <div class="news-card news-featured">
+        <div class="news-surface-bar bar-clay"></div>
+        <div class="news-body">
+          <span class="news-category">Roland Garros</span>
+          <h3>Alcaraz Defends His Clay Title in Paris</h3>
+          <p>Carlos Alcaraz put on a masterclass performance to claim his second Roland Garros title, defeating Jannik Sinner in an epic five-set final.</p>
+          <span class="news-date">June 8, 2025</span>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-surface-bar bar-blue"></div>
+        <div class="news-body">
+          <span class="news-category">Australian Open</span>
+          <h3>Sinner Makes It Back-to-Back in Melbourne</h3>
+          <p>Jannik Sinner claimed his second consecutive Australian Open title, cementing his status as the world's best hard court player.</p>
+          <span class="news-date">Jan 26, 2025</span>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-surface-bar bar-green"></div>
+        <div class="news-body">
+          <span class="news-category">Wimbledon</span>
+          <h3>Alcaraz Wins Third Wimbledon Crown</h3>
+          <p>The Spaniard proved once again that grass is no obstacle, taking his third Wimbledon title in stunning fashion.</p>
+          <span class="news-date">July 13, 2025</span>
+        </div>
+      </div>
+    </div>
+    <div class="center-btn">
+      <a href="news.html" class="btn btn-outline">All News →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo">🎾 TennisFan</span>
+        <p>Your home for everything tennis.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="players.html">Players</a>
+        <a href="tournaments.html">Tournaments</a>
+        <a href="news.html">News</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 TennisFan. Made with 🎾 passion.</p>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

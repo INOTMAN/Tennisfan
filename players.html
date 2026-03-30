@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TennisFan — Players</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">🎾 TennisFan</a>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="players.html" class="active">Players</a></li>
+      <li><a href="tournaments.html">Tournaments</a></li>
+      <li><a href="scores.html">Scores</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="quiz.html">Quiz 🎯</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="search-btn" id="searchBtn" title="Search">&#128269;</button>
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+    </div>
+  </nav>
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search players, tournaments, news..." autocomplete="off" />
+      <button class="search-close" id="searchClose">&times;</button>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="section-tag">Rankings & Profiles</span>
+      <h1>The Players</h1>
+      <p>From the legends who shaped the sport to the stars dominating today.</p>
+    </div>
+  </section>
+
+  <!-- ATP RANKINGS -->
+  <section class="section rankings-section">
+    <div class="section-header">
+      <span class="section-tag">ATP Tour</span>
+      <h2>Men's Top 10</h2>
+    </div>
+    <div class="rankings-table-wrap">
+      <table class="rankings-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Player</th>
+            <th>Country</th>
+            <th>Points</th>
+            <th>Best Slam</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="rank-top3">
+            <td><span class="rank-num gold">1</span></td>
+            <td><img class="player-avatar-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Carlos_Alcaraz_2025_FO.jpg/500px-Carlos_Alcaraz_2025_FO.jpg" alt="Carlos Alcaraz"> Carlos Alcaraz</td>
+            <td>🇪🇸 Spain</td>
+            <td>13,550</td>
+            <td>RG 2024, W 2023–24</td>
+          </tr>
+          <tr class="rank-top3">
+            <td><span class="rank-num silver">2</span></td>
+            <td><img class="player-avatar-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Jannik_Sinner_2025_US_Open.jpg/500px-Jannik_Sinner_2025_US_Open.jpg" alt="Jannik Sinner"> Jannik Sinner</td>
+            <td>🇮🇹 Italy</td>
+            <td>11,400</td>
+            <td>AO 2024, 2025</td>
+          </tr>
+          <tr class="rank-top3">
+            <td><span class="rank-num bronze">3</span></td>
+            <td><img class="player-avatar-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Novak_Djokovic_2024_Paris_Olympics.jpg/500px-Novak_Djokovic_2024_Paris_Olympics.jpg" alt="Novak Djokovic"> Novak Djokovic</td>
+            <td>🇷🇸 Serbia</td>
+            <td>5,370</td>
+            <td>24 Grand Slams</td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">4</span></td>
+            <td><img class="player-avatar-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/2022_Alexander_Zverev_9SC4939_%28cropped%29.jpg/500px-2022_Alexander_Zverev_9SC4939_%28cropped%29.jpg" alt="Alexander Zverev"> Alexander Zverev</td>
+            <td>🇩🇪 Germany</td>
+            <td>4,905</td>
+            <td>RG 2024 F</td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">5</span></td>
+            <td><img class="player-avatar-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Musetti_MCM23_%2811%29_%2852883593753%29.jpg/500px-Musetti_MCM23_%2811%29_%2852883593753%29.jpg" alt="Lorenzo Musetti"> Lorenzo Musetti</td>
+            <td>🇮🇹 Italy</td>
+            <td>4,365</td>
+            <td>W 2024 SF</td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">6</span></td>
+            <td><img class="player-avatar-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Alex_de_Minaur_2024.jpg/500px-Alex_de_Minaur_2024.jpg" alt="Alex de Minaur"> Alex de Minaur</td>
+            <td>🇦🇺 Australia</td>
+            <td>4,185</td>
+            <td>W 2024 SF</td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">7</span></td>
+            <td><img class="player-avatar-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Taylor_Fritz_-_Delray_Beach_Open_Final_Round_%28cropped%29.jpg/500px-Taylor_Fritz_-_Delray_Beach_Open_Final_Round_%28cropped%29.jpg" alt="Taylor Fritz"> Taylor Fritz</td>
+            <td>🇺🇸 USA</td>
+            <td>4,170</td>
+            <td>USO 2024 F</td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">8</span></td>
+            <td><img class="player-avatar-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/F%C3%A9lix_Auger-Aliassime_%282023_DC_Open%29_01_%28cropped%29.jpg/500px-F%C3%A9lix_Auger-Aliassime_%282023_DC_Open%29_01_%28cropped%29.jpg" alt="Felix Auger-Aliassime"> Felix Auger-Aliassime</td>
+            <td>🇨🇦 Canada</td>
+            <td>4,000</td>
+            <td>AO 2023 QF</td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">9</span></td>
+            <td><img class="player-avatar-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Ben_Shelton%2C_media_conference%2C_Swiss_Indoors_Basel_2025_%28cropped%29.jpg/500px-Ben_Shelton%2C_media_conference%2C_Swiss_Indoors_Basel_2025_%28cropped%29.jpg" alt="Ben Shelton"> Ben Shelton</td>
+            <td>🇺🇸 USA</td>
+            <td>3,860</td>
+            <td>USO 2023 SF</td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">10</span></td>
+            <td><img class="player-avatar-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Danill_Medvedev_Miami_2019_%28cropped%29.jpg/500px-Danill_Medvedev_Miami_2019_%28cropped%29.jpg" alt="Daniil Medvedev"> Daniil Medvedev</td>
+            <td>🇷🇺 Russia</td>
+            <td>3,610</td>
+            <td>USO 2021</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- WTA RANKINGS -->
+  <section class="section rankings-section rankings-wta">
+    <div class="section-header">
+      <span class="section-tag">WTA Tour</span>
+      <h2>Women's Top 10</h2>
+    </div>
+    <div class="rankings-table-wrap">
+      <table class="rankings-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Player</th>
+            <th>Country</th>
+            <th>Points</th>
+            <th>Best Slam</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="rank-top3">
+            <td><span class="rank-num gold">1</span></td>
+            <td><img class="player-avatar-sm" src="https://wtafiles.blob.core.windows.net/images/headshots/320760.jpg" alt="Aryna Sabalenka"> Aryna Sabalenka</td>
+            <td>🇧🇾 Belarus</td>
+            <td>11,025</td>
+            <td>AO 2023–25, USO 2023–24</td>
+          </tr>
+          <tr class="rank-top3">
+            <td><span class="rank-num silver">2</span></td>
+            <td><img class="player-avatar-sm" src="https://wtafiles.blob.core.windows.net/images/headshots/324166.jpg" alt="Elena Rybakina"> Elena Rybakina</td>
+            <td>🇰🇿 Kazakhstan</td>
+            <td>7,783</td>
+            <td>W 2022</td>
+          </tr>
+          <tr class="rank-top3">
+            <td><span class="rank-num bronze">3</span></td>
+            <td><img class="player-avatar-sm" src="https://wtafiles.blob.core.windows.net/images/headshots/326408.jpg" alt="Iga Swiatek"> Iga Swiatek</td>
+            <td>🇵🇱 Poland</td>
+            <td>7,413</td>
+            <td>RG 2020–24</td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">4</span></td>
+            <td><img class="player-avatar-sm" src="https://wtafiles.blob.core.windows.net/images/headshots/328560.jpg" alt="Coco Gauff"> Coco Gauff</td>
+            <td>🇺🇸 USA</td>
+            <td>6,748</td>
+            <td>USO 2023</td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">5</span></td>
+            <td><img class="player-avatar-sm" src="https://wtafiles.blob.core.windows.net/images/headshots/316956.jpg" alt="Jessica Pegula"> Jessica Pegula</td>
+            <td>🇺🇸 USA</td>
+            <td>6,678</td>
+            <td>USO 2024 F</td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">6</span></td>
+            <td><img class="player-avatar-sm" src="https://wtafiles.blob.core.windows.net/images/headshots/326384.jpg" alt="Amanda Anisimova"> Amanda Anisimova</td>
+            <td>🇺🇸 USA</td>
+            <td>6,180</td>
+            <td>RG 2019 SF</td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">7</span></td>
+            <td><img class="player-avatar-sm" src="https://wtafiles.blob.core.windows.net/images/headshots/319280.jpg" alt="Jasmine Paolini"> Jasmine Paolini</td>
+            <td>🇮🇹 Italy</td>
+            <td>4,232</td>
+            <td>RG 2024 F, W 2024 F</td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">8</span></td>
+            <td><img class="player-avatar-sm" src="https://wtafiles.blob.core.windows.net/images/headshots/316738.jpg" alt="Elina Svitolina"> Elina Svitolina</td>
+            <td>🇺🇦 Ukraine</td>
+            <td>4,020</td>
+            <td>W 2019 SF</td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">9</span></td>
+            <td><img class="player-avatar-sm" src="https://photoresources.wtatennis.com/photo-resources/2025/08/05/af6d963c-3002-4f34-bbd3-5c475538e031/Mboko-Torso_331006.png?width=790&height=740" alt="Victoria Mboko"> Victoria Mboko</td>
+            <td>🇨🇦 Canada</td>
+            <td>3,351</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">10</span></td>
+            <td><img class="player-avatar-sm" src="https://wtafiles.blob.core.windows.net/images/headshots/331809.jpg" alt="Mirra Andreeva"> Mirra Andreeva</td>
+            <td>🇷🇺 Russia</td>
+            <td>3,066</td>
+            <td>RG 2024 SF</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- LEGENDS -->
+  <section class="section legends-section">
+    <div class="section-header">
+      <span class="section-tag">All-Time Greats</span>
+      <h2>Tennis Legends</h2>
+      <p>The players who defined generations.</p>
+    </div>
+    <div class="legends-grid">
+
+      <div class="legend-card">
+        <img class="legend-avatar" src="https://upload.wikimedia.org/wikipedia/commons/1/11/Roger_Federer_2015_%28cropped%29.jpg" alt="Roger Federer">
+        <div class="legend-info">
+          <h3>Roger Federer</h3>
+          <span class="legend-country">🇨🇭 Switzerland</span>
+          <div class="legend-slams">
+            <span class="slam-badge slam-w">W×8</span>
+            <span class="slam-badge slam-ao">AO×6</span>
+            <span class="slam-badge slam-uso">USO×5</span>
+            <span class="slam-badge slam-rg">RG×1</span>
+          </div>
+          <p>20 Grand Slam titles. The most elegant player to ever grace a tennis court. Known for his effortless footwork and precise shot-making.</p>
+          <div class="legend-stat-row">
+            <span>Slams: <strong>20</strong></span>
+            <span>W Titles: <strong>103</strong></span>
+            <span>Retired: <strong>2022</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="legend-card">
+        <img class="legend-avatar" src="https://upload.wikimedia.org/wikipedia/commons/7/71/Rafael_Nadal_en_2024_%28cropped%29.jpg" alt="Rafael Nadal">
+        <div class="legend-info">
+          <h3>Rafael Nadal</h3>
+          <span class="legend-country">🇪🇸 Spain</span>
+          <div class="legend-slams">
+            <span class="slam-badge slam-rg">RG×14</span>
+            <span class="slam-badge slam-ao">AO×2</span>
+            <span class="slam-badge slam-uso">USO×4</span>
+            <span class="slam-badge slam-w">W×2</span>
+          </div>
+          <p>22 Grand Slam titles. The King of Clay. An unmatched 14 Roland Garros titles. His passion and fighting spirit are the stuff of legend.</p>
+          <div class="legend-stat-row">
+            <span>Slams: <strong>22</strong></span>
+            <span>W Titles: <strong>92</strong></span>
+            <span>Retired: <strong>2024</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="legend-card">
+        <img class="legend-avatar" src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Novak_Djokovic_2024_Paris_Olympics.jpg" alt="Novak Djokovic">
+        <div class="legend-info">
+          <h3>Novak Djokovic</h3>
+          <span class="legend-country">🇷🇸 Serbia</span>
+          <div class="legend-slams">
+            <span class="slam-badge slam-ao">AO×10</span>
+            <span class="slam-badge slam-w">W×7</span>
+            <span class="slam-badge slam-uso">USO×4</span>
+            <span class="slam-badge slam-rg">RG×3</span>
+          </div>
+          <p>24 Grand Slam titles — the most in history. The greatest returner of all time. Has held World No. 1 for a record number of weeks.</p>
+          <div class="legend-stat-row">
+            <span>Slams: <strong>24</strong></span>
+            <span>W Titles: <strong>98</strong></span>
+            <span>Active: <strong>Yes</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="legend-card">
+        <img class="legend-avatar" src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Serena_Williams_at_the_2025_International_Tennis_Hall_of_Fame_Induction_Ceremony_Press_Conference_%28cropped%29.jpg" alt="Serena Williams">
+        <div class="legend-info">
+          <h3>Serena Williams</h3>
+          <span class="legend-country">🇺🇸 United States</span>
+          <div class="legend-slams">
+            <span class="slam-badge slam-uso">USO×6</span>
+            <span class="slam-badge slam-ao">AO×7</span>
+            <span class="slam-badge slam-w">W×7</span>
+            <span class="slam-badge slam-rg">RG×3</span>
+          </div>
+          <p>23 Grand Slam titles. The greatest female tennis player of all time. Dominated women's tennis for over two decades with unmatched power and determination.</p>
+          <div class="legend-stat-row">
+            <span>Slams: <strong>23</strong></span>
+            <span>W Titles: <strong>73</strong></span>
+            <span>Retired: <strong>2022</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="legend-card">
+        <img class="legend-avatar" src="https://upload.wikimedia.org/wikipedia/commons/9/93/Andre_Agassi_%282011%29.jpg" alt="Andre Agassi">
+        <div class="legend-info">
+          <h3>Andre Agassi</h3>
+          <span class="legend-country">🇺🇸 United States</span>
+          <div class="legend-slams">
+            <span class="slam-badge slam-ao">AO×4</span>
+            <span class="slam-badge slam-uso">USO×2</span>
+            <span class="slam-badge slam-w">W×1</span>
+            <span class="slam-badge slam-rg">RG×1</span>
+          </div>
+          <p>8 Grand Slam titles. One of the most beloved players in tennis history. Achieved the Career Golden Slam — winning all 4 Slams and Olympic Gold.</p>
+          <div class="legend-stat-row">
+            <span>Slams: <strong>8</strong></span>
+            <span>W Titles: <strong>60</strong></span>
+            <span>Retired: <strong>2006</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="legend-card">
+        <img class="legend-avatar" src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Pete_Sampras_Champions_Shootout_2.jpg" alt="Pete Sampras">
+        <div class="legend-info">
+          <h3>Pete Sampras</h3>
+          <span class="legend-country">🇺🇸 United States</span>
+          <div class="legend-slams">
+            <span class="slam-badge slam-w">W×7</span>
+            <span class="slam-badge slam-uso">USO×5</span>
+            <span class="slam-badge slam-ao">AO×2</span>
+          </div>
+          <p>14 Grand Slam titles. One of the greatest serve-and-volley players ever. Dominated Wimbledon and the US Open throughout the 1990s.</p>
+          <div class="legend-stat-row">
+            <span>Slams: <strong>14</strong></span>
+            <span>W Titles: <strong>64</strong></span>
+            <span>Retired: <strong>2002</strong></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GOAT DEBATE -->
+  <section class="section goat-section">
+    <div class="section-header">
+      <span class="section-tag">The Greatest Debate</span>
+      <h2>G.O.A.T. Comparison</h2>
+      <p>Federer, Nadal, Djokovic — who is the greatest of all time?</p>
+    </div>
+    <div class="goat-grid">
+      <div class="goat-card">
+        <img class="goat-avatar" src="https://upload.wikimedia.org/wikipedia/commons/1/11/Roger_Federer_2015_%28cropped%29.jpg" alt="Roger Federer">
+        <h3>Roger Federer</h3>
+        <span class="goat-country">🇨🇭 Switzerland</span>
+        <div class="goat-stats">
+          <div class="goat-stat"><span>Grand Slams</span><strong>20</strong></div>
+          <div class="goat-stat"><span>Weeks #1</span><strong>310</strong></div>
+          <div class="goat-stat"><span>Titles</span><strong>103</strong></div>
+          <div class="goat-stat"><span>Wimbledon</span><strong>8</strong></div>
+          <div class="goat-stat"><span>Win %</span><strong>82%</strong></div>
+          <div class="goat-stat"><span>Career</span><strong>1998–2022</strong></div>
+        </div>
+        <p class="goat-desc">The most elegant player in history. Known for his effortless style, SABR technique, and unmatched shot variety. Holds the record for most Wimbledon titles.</p>
+      </div>
+      <div class="goat-card goat-card-center">
+        <img class="goat-avatar" src="https://upload.wikimedia.org/wikipedia/commons/7/71/Rafael_Nadal_en_2024_%28cropped%29.jpg" alt="Rafael Nadal">
+        <h3>Rafael Nadal</h3>
+        <span class="goat-country">🇪🇸 Spain</span>
+        <div class="goat-stats">
+          <div class="goat-stat"><span>Grand Slams</span><strong>22</strong></div>
+          <div class="goat-stat"><span>Weeks #1</span><strong>209</strong></div>
+          <div class="goat-stat"><span>Titles</span><strong>92</strong></div>
+          <div class="goat-stat"><span>Roland Garros</span><strong>14</strong></div>
+          <div class="goat-stat"><span>Win %</span><strong>83%</strong></div>
+          <div class="goat-stat"><span>Career</span><strong>2001–2024</strong></div>
+        </div>
+        <p class="goat-desc">The King of Clay. His 14 Roland Garros titles is arguably the greatest individual achievement in tennis history. A warrior of unmatched fighting spirit.</p>
+      </div>
+      <div class="goat-card">
+        <img class="goat-avatar" src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Novak_Djokovic_2024_Paris_Olympics.jpg" alt="Novak Djokovic">
+        <h3>Novak Djokovic</h3>
+        <span class="goat-country">🇷🇸 Serbia</span>
+        <div class="goat-stats">
+          <div class="goat-stat"><span>Grand Slams</span><strong>24</strong></div>
+          <div class="goat-stat"><span>Weeks #1</span><strong>428</strong></div>
+          <div class="goat-stat"><span>Titles</span><strong>98</strong></div>
+          <div class="goat-stat"><span>Australian Open</span><strong>10</strong></div>
+          <div class="goat-stat"><span>Win %</span><strong>83%</strong></div>
+          <div class="goat-stat"><span>Career</span><strong>2003–present</strong></div>
+        </div>
+        <p class="goat-desc">The most decorated player by numbers. Record 24 Grand Slams, record 428 weeks at #1. The greatest returner and most complete player statistically.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HEAD TO HEAD -->
+  <section class="section h2h-section">
+    <div class="section-header">
+      <span class="section-tag">Rivalries</span>
+      <h2>Head to Head</h2>
+      <p>The greatest rivalries in tennis history.</p>
+    </div>
+    <div class="h2h-grid">
+      <div class="h2h-card">
+        <div class="h2h-players">
+          <div class="h2h-player">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Roger_Federer_2015_%28cropped%29.jpg" alt="Federer">
+            <span>Federer</span>
+          </div>
+          <div class="h2h-score">
+            <span class="h2h-num">16</span>
+            <span class="h2h-vs">VS</span>
+            <span class="h2h-num">24</span>
+          </div>
+          <div class="h2h-player">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Rafael_Nadal_en_2024_%28cropped%29.jpg" alt="Nadal">
+            <span>Nadal</span>
+          </div>
+        </div>
+        <p class="h2h-note">Nadal leads. The greatest rivalry in tennis history — 40 meetings across all surfaces.</p>
+      </div>
+      <div class="h2h-card">
+        <div class="h2h-players">
+          <div class="h2h-player">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Roger_Federer_2015_%28cropped%29.jpg" alt="Federer">
+            <span>Federer</span>
+          </div>
+          <div class="h2h-score">
+            <span class="h2h-num">23</span>
+            <span class="h2h-vs">VS</span>
+            <span class="h2h-num">27</span>
+          </div>
+          <div class="h2h-player">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Novak_Djokovic_2024_Paris_Olympics.jpg" alt="Djokovic">
+            <span>Djokovic</span>
+          </div>
+        </div>
+        <p class="h2h-note">Djokovic leads. 50 matches — the most between any two players in the Open Era.</p>
+      </div>
+      <div class="h2h-card">
+        <div class="h2h-players">
+          <div class="h2h-player">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Rafael_Nadal_en_2024_%28cropped%29.jpg" alt="Nadal">
+            <span>Nadal</span>
+          </div>
+          <div class="h2h-score">
+            <span class="h2h-num">29</span>
+            <span class="h2h-vs">VS</span>
+            <span class="h2h-num">30</span>
+          </div>
+          <div class="h2h-player">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Novak_Djokovic_2024_Paris_Olympics.jpg" alt="Djokovic">
+            <span>Djokovic</span>
+          </div>
+        </div>
+        <p class="h2h-note">Djokovic leads 30–29. The closest rivalry — decided by just one match across 59 encounters.</p>
+      </div>
+      <div class="h2h-card">
+        <div class="h2h-players">
+          <div class="h2h-player">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Carlos_Alcaraz_2025_FO.jpg/500px-Carlos_Alcaraz_2025_FO.jpg" alt="Alcaraz">
+            <span>Alcaraz</span>
+          </div>
+          <div class="h2h-score">
+            <span class="h2h-num">8</span>
+            <span class="h2h-vs">VS</span>
+            <span class="h2h-num">7</span>
+          </div>
+          <div class="h2h-player">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Jannik_Sinner_2025_US_Open.jpg/500px-Jannik_Sinner_2025_US_Open.jpg" alt="Sinner">
+            <span>Sinner</span>
+          </div>
+        </div>
+        <p class="h2h-note">Alcaraz leads. The rivalry of the next generation — destined to define the next decade.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo">🎾 TennisFan</span>
+        <p>Your home for everything tennis.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="players.html">Players</a>
+        <a href="tournaments.html">Tournaments</a>
+        <a href="news.html">News</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 TennisFan. Made with 🎾 passion.</p>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

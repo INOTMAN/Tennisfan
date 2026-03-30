@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TennisFan — News</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">🎾 TennisFan</a>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="players.html">Players</a></li>
+      <li><a href="tournaments.html">Tournaments</a></li>
+      <li><a href="scores.html">Scores</a></li>
+      <li><a href="news.html" class="active">News</a></li>
+      <li><a href="quiz.html">Quiz 🎯</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="search-btn" id="searchBtn" title="Search">&#128269;</button>
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+    </div>
+  </nav>
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search players, tournaments, news..." autocomplete="off" />
+      <button class="search-close" id="searchClose">&times;</button>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero page-hero-news">
+    <div class="page-hero-content">
+      <span class="section-tag">Stay Updated</span>
+      <h1>Tennis News</h1>
+      <p>The latest stories from the world of tennis.</p>
+    </div>
+  </section>
+
+  <!-- NEWS FILTER -->
+  <section class="news-filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="atp">ATP</button>
+    <button class="filter-btn" data-filter="wta">WTA</button>
+    <button class="filter-btn" data-filter="slam">Grand Slams</button>
+  </section>
+
+  <!-- NEWS GRID -->
+  <section class="section news-full-section">
+    <div class="news-full-grid">
+
+      <!-- FEATURED -->
+      <article class="article-card article-featured" data-category="slam atp">
+        <div class="article-surface bar-blue"></div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span class="article-cat cat-slam">Grand Slam</span>
+            <span class="article-date">January 26, 2025</span>
+          </div>
+          <h2>Sinner Wins Back-to-Back Australian Open Titles</h2>
+          <p>Jannik Sinner delivered a dominant performance to clinch his second consecutive Australian Open title. The Italian world number one defeated Alexander Zverev in straight sets, showcasing the relentless baseline power that has made him the most feared player on tour. With this victory, Sinner has now won three Grand Slam titles before his 24th birthday.</p>
+          <div class="share-btns">
+            <button class="share-btn share-x" onclick="shareArticle('x',this)">𝕏 Share</button>
+            <button class="share-btn share-wa" onclick="shareArticle('whatsapp',this)">💬 WhatsApp</button>
+            <button class="share-btn share-fb" onclick="shareArticle('facebook',this)">Facebook</button>
+          </div>
+          <div class="article-tags">
+            <span class="tag">Australian Open</span>
+            <span class="tag">Sinner</span>
+            <span class="tag">Hard Court</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- REGULAR ARTICLES -->
+      <article class="article-card" data-category="wta slam">
+        <div class="article-surface bar-blue"></div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span class="article-cat cat-wta">WTA</span>
+            <span class="article-date">January 25, 2025</span>
+          </div>
+          <h3>Sabalenka Dominates Women's Draw in Melbourne</h3>
+          <p>Aryna Sabalenka claimed her third Australian Open title with a powerful display against Iga Swiatek in the final. The Belarusian's serve and aggressive groundstrokes proved too much for the world number two.</p>
+          <div class="share-btns">
+            <button class="share-btn share-x" onclick="shareArticle('x',this)">𝕏 Share</button>
+            <button class="share-btn share-wa" onclick="shareArticle('whatsapp',this)">💬 WhatsApp</button>
+            <button class="share-btn share-fb" onclick="shareArticle('facebook',this)">Facebook</button>
+          </div>
+          <div class="article-tags">
+            <span class="tag">Sabalenka</span>
+            <span class="tag">WTA</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card" data-category="slam atp">
+        <div class="article-surface bar-clay"></div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span class="article-cat cat-slam">Grand Slam</span>
+            <span class="article-date">June 8, 2025</span>
+          </div>
+          <h3>Alcaraz Reigns Supreme on Clay in Paris</h3>
+          <p>Carlos Alcaraz claimed his second Roland Garros title after an epic five-set battle against Jannik Sinner. The match lasted four hours and 22 minutes in what many are calling the greatest final in recent memory.</p>
+          <div class="share-btns">
+            <button class="share-btn share-x" onclick="shareArticle('x',this)">𝕏 Share</button>
+            <button class="share-btn share-wa" onclick="shareArticle('whatsapp',this)">💬 WhatsApp</button>
+            <button class="share-btn share-fb" onclick="shareArticle('facebook',this)">Facebook</button>
+          </div>
+          <div class="article-tags">
+            <span class="tag">Roland Garros</span>
+            <span class="tag">Alcaraz</span>
+            <span class="tag">Clay</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card" data-category="wta slam">
+        <div class="article-surface bar-clay"></div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span class="article-cat cat-wta">WTA</span>
+            <span class="article-date">June 7, 2025</span>
+          </div>
+          <h3>Swiatek Claims Fifth Roland Garros Crown</h3>
+          <p>Iga Swiatek continued her extraordinary dominance on clay, claiming her fifth Roland Garros title. The Polish star dropped only one set throughout the entire tournament, dismantling opponents with her signature heavy topspin.</p>
+          <div class="share-btns">
+            <button class="share-btn share-x" onclick="shareArticle('x',this)">𝕏 Share</button>
+            <button class="share-btn share-wa" onclick="shareArticle('whatsapp',this)">💬 WhatsApp</button>
+            <button class="share-btn share-fb" onclick="shareArticle('facebook',this)">Facebook</button>
+          </div>
+          <div class="article-tags">
+            <span class="tag">Swiatek</span>
+            <span class="tag">Clay</span>
+            <span class="tag">Roland Garros</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card" data-category="slam atp">
+        <div class="article-surface bar-green"></div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span class="article-cat cat-slam">Grand Slam</span>
+            <span class="article-date">July 13, 2025</span>
+          </div>
+          <h3>Alcaraz Makes Wimbledon His Home — Third Title at The All England Club</h3>
+          <p>Carlos Alcaraz cemented his status as the King of Grass with a devastating straight-sets victory in the Wimbledon final. His ability to adapt to every surface has drawn comparisons to the greatest all-court players in history.</p>
+          <div class="share-btns">
+            <button class="share-btn share-x" onclick="shareArticle('x',this)">𝕏 Share</button>
+            <button class="share-btn share-wa" onclick="shareArticle('whatsapp',this)">💬 WhatsApp</button>
+            <button class="share-btn share-fb" onclick="shareArticle('facebook',this)">Facebook</button>
+          </div>
+          <div class="article-tags">
+            <span class="tag">Wimbledon</span>
+            <span class="tag">Alcaraz</span>
+            <span class="tag">Grass</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card" data-category="atp">
+        <div class="article-surface bar-blue"></div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span class="article-cat cat-atp">ATP</span>
+            <span class="article-date">November 15, 2025</span>
+          </div>
+          <h3>Sinner Ends 2025 as World Number One</h3>
+          <p>Jannik Sinner finished the 2025 season as the undisputed world number one after a remarkable year. The Italian took two Grand Slams and finished with the best win-loss record on tour, defeating Alcaraz in the ATP Finals final.</p>
+          <div class="share-btns">
+            <button class="share-btn share-x" onclick="shareArticle('x',this)">𝕏 Share</button>
+            <button class="share-btn share-wa" onclick="shareArticle('whatsapp',this)">💬 WhatsApp</button>
+            <button class="share-btn share-fb" onclick="shareArticle('facebook',this)">Facebook</button>
+          </div>
+          <div class="article-tags">
+            <span class="tag">Sinner</span>
+            <span class="tag">ATP Finals</span>
+            <span class="tag">Rankings</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card" data-category="wta">
+        <div class="article-surface bar-blue"></div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span class="article-cat cat-wta">WTA</span>
+            <span class="article-date">September 6, 2025</span>
+          </div>
+          <h3>Sabalenka Wins US Open for Third Consecutive Year</h3>
+          <p>Aryna Sabalenka made history by winning the US Open for the third consecutive year. The Belarusian powerhouse defeated Coco Gauff in a thrilling three-set final at Arthur Ashe Stadium.</p>
+          <div class="share-btns">
+            <button class="share-btn share-x" onclick="shareArticle('x',this)">𝕏 Share</button>
+            <button class="share-btn share-wa" onclick="shareArticle('whatsapp',this)">💬 WhatsApp</button>
+            <button class="share-btn share-fb" onclick="shareArticle('facebook',this)">Facebook</button>
+          </div>
+          <div class="article-tags">
+            <span class="tag">Sabalenka</span>
+            <span class="tag">US Open</span>
+            <span class="tag">WTA</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card" data-category="atp">
+        <div class="article-surface bar-blue"></div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span class="article-cat cat-atp">ATP</span>
+            <span class="article-date">September 7, 2025</span>
+          </div>
+          <h3>Sinner Wins US Open — His Second Major of 2025</h3>
+          <p>Jannik Sinner completed a remarkable year by claiming the US Open title, defeating Taylor Fritz in four sets. This was Sinner's second Grand Slam of the year after his Australian Open success in January.</p>
+          <div class="share-btns">
+            <button class="share-btn share-x" onclick="shareArticle('x',this)">𝕏 Share</button>
+            <button class="share-btn share-wa" onclick="shareArticle('whatsapp',this)">💬 WhatsApp</button>
+            <button class="share-btn share-fb" onclick="shareArticle('facebook',this)">Facebook</button>
+          </div>
+          <div class="article-tags">
+            <span class="tag">Sinner</span>
+            <span class="tag">US Open</span>
+            <span class="tag">Hard Court</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card" data-category="atp wta">
+        <div class="article-surface bar-yellow"></div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span class="article-cat cat-atp">General</span>
+            <span class="article-date">December 1, 2025</span>
+          </div>
+          <h3>Tennis in 2025: A Year of Young Dominance</h3>
+          <p>Looking back at an incredible year in tennis. Sinner and Alcaraz split the four Grand Slams between them for the second consecutive year, while Sabalenka dominated the WTA circuit. The Next Gen has officially arrived — and the Big Three era has given way to something equally spectacular.</p>
+          <div class="share-btns">
+            <button class="share-btn share-x" onclick="shareArticle('x',this)">𝕏 Share</button>
+            <button class="share-btn share-wa" onclick="shareArticle('whatsapp',this)">💬 WhatsApp</button>
+            <button class="share-btn share-fb" onclick="shareArticle('facebook',this)">Facebook</button>
+          </div>
+          <div class="article-tags">
+            <span class="tag">2025 Review</span>
+            <span class="tag">ATP</span>
+            <span class="tag">WTA</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo">🎾 TennisFan</span>
+        <p>Your home for everything tennis.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="players.html">Players</a>
+        <a href="tournaments.html">Tournaments</a>
+        <a href="news.html">News</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 TennisFan. Made with 🎾 passion.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

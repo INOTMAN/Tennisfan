@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TennisFan — Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">🎾 TennisFan</a>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="players.html">Players</a></li>
+      <li><a href="tournaments.html">Tournaments</a></li>
+      <li><a href="scores.html">Scores</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="quiz.html" class="active">Quiz 🎯</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="search-btn" id="searchBtn" title="Search">&#128269;</button>
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+    </div>
+  </nav>
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search players, tournaments, news..." autocomplete="off" />
+      <button class="search-close" id="searchClose">&times;</button>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="section-tag">Test Your Knowledge</span>
+      <h1>Tennis Quiz 🎯</h1>
+      <p>15 questions — from beginner to expert. How well do you know tennis?</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="section quiz-section">
+    <div class="quiz-container">
+
+      <!-- START SCREEN -->
+      <div class="quiz-start" id="quizStart">
+        <div class="quiz-start-icon">🎾</div>
+        <h2>Ready to Play?</h2>
+        <p>15 questions covering Grand Slam history, player records, rules, and more.</p>
+        <div class="quiz-difficulty">
+          <span class="quiz-diff-badge">⚡ Mixed Difficulty</span>
+          <span class="quiz-diff-badge">⏱ No Time Limit</span>
+          <span class="quiz-diff-badge">📊 Instant Feedback</span>
+        </div>
+        <button class="btn btn-primary" id="startQuizBtn">Start Quiz →</button>
+      </div>
+
+      <!-- QUESTION SCREEN -->
+      <div class="quiz-play" id="quizPlay" style="display:none">
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="quizProgressFill"></div>
+        </div>
+        <div class="quiz-meta">
+          <span id="quizQNum">Question 1 / 15</span>
+          <span id="quizScore">Score: 0</span>
+        </div>
+        <div class="quiz-card">
+          <p class="quiz-question" id="quizQuestion"></p>
+          <div class="quiz-options" id="quizOptions"></div>
+          <p class="quiz-feedback" id="quizFeedback"></p>
+          <button class="btn btn-primary" id="quizNextBtn" style="display:none">Next →</button>
+        </div>
+      </div>
+
+      <!-- RESULT SCREEN -->
+      <div class="quiz-result" id="quizResult" style="display:none">
+        <div class="result-emoji" id="resultEmoji"></div>
+        <h2 id="resultTitle"></h2>
+        <p id="resultSubtitle"></p>
+        <div class="result-score-circle">
+          <span id="resultScore"></span>
+          <small>/ 15</small>
+        </div>
+        <div class="result-breakdown" id="resultBreakdown"></div>
+        <button class="btn btn-primary" id="retryBtn">Play Again 🔄</button>
+        <a href="players.html" class="btn btn-outline" style="margin-left:0.5rem">Explore Players →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo">🎾 TennisFan</span>
+        <p>Your home for everything tennis.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="players.html">Players</a>
+        <a href="tournaments.html">Tournaments</a>
+        <a href="news.html">News</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 TennisFan. Made with 🎾 passion.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
