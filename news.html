@@ -4,28 +4,377 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tennis News 2026 — Latest ATP & WTA Updates | TennisFan</title>
-  <meta name="description" content="Latest tennis news, match reports, player updates and Grand Slam coverage. Stay up to date with ATP and WTA tour news in 2026." />
-  <meta name="keywords" content="tennis news, ATP news, WTA news, Grand Slam news, Wimbledon news, Roland Garros news, tennis 2026, tennis updates" />
+  <meta name="description" content="Latest tennis news, match reports, player updates and Grand Slam coverage." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://inotman.github.io/Tennisfan/news.html" />
-  <meta property="og:title" content="Tennis News 2026 — Latest ATP & WTA Updates | TennisFan" />
-  <meta property="og:description" content="Latest tennis news, match reports and Grand Slam coverage from ATP and WTA tour." />
-  <meta property="og:url" content="https://inotman.github.io/Tennisfan/news.html" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Tennis News 2026 — Latest ATP & WTA Updates" />
-  <meta name="twitter:description" content="Latest tennis news, match reports and Grand Slam coverage." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDMQPS93XT"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-JDMQPS93XT');
-  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JDMQPS93XT');</script>
+  <style>
+    /* ── TENNIS COLOR PALETTE ───────────────────────────────────── */
+    :root {
+      --yellow:  #c8e000;   /* tennis ball */
+      --green:   #2d7a4f;   /* grass court */
+      --blue:    #1565c0;   /* hard court  */
+      --clay:    #c1440e;   /* clay court  */
+      --dark:    #0f1a0f;
+      --card-bg: #ffffff;
+    }
+
+    body { background: #eef2e6; font-family: 'Inter', sans-serif; }
+
+    /* ── NEWS HEADER ────────────────────────────────────────────── */
+    .news-header {
+      background: var(--dark);
+      padding: 2rem 1.5rem 1.5rem;
+      text-align: center;
+      border-bottom: 4px solid var(--yellow);
+    }
+    .news-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto 1rem;
+      font-size: 0.72rem;
+      color: #888;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .news-title {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .news-title span { color: var(--yellow); }
+    .news-tagline {
+      font-size: 0.8rem;
+      color: #aaa;
+      margin-top: 0.3rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── BREAKING TICKER ────────────────────────────────────────── */
+    .news-ticker {
+      background: var(--clay);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      overflow: hidden;
+      padding: 0.5rem 0;
+    }
+    .ticker-label {
+      background: #fff;
+      color: var(--clay);
+      font-weight: 800;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.8rem;
+      white-space: nowrap;
+      margin-left: 1rem;
+    }
+    .ticker-track {
+      display: flex;
+      gap: 3rem;
+      animation: ticker 30s linear infinite;
+      white-space: nowrap;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── MAIN WRAP ──────────────────────────────────────────────── */
+    .news-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* ── FULL HERO VIDEO ────────────────────────────────────────── */
+    .news-fullhero {
+      position: relative;
+      width: 100%;
+      height: 92vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .news-fullhero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .news-fullhero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.65) 100%);
+      z-index: 1;
+    }
+    .news-fullhero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+      max-width: 800px;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--clay);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+    .news-fullhero-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.2;
+      margin: 0 0 1rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+    }
+    .news-fullhero-meta {
+      font-size: 0.8rem;
+      color: #ddd;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+    .news-fullhero-quote {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--dark);
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.6;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      max-width: 560px;
+    }
+    .news-fullhero-quote cite {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      font-style: normal;
+      margin-top: 0.4rem;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── SECTION LABEL ──────────────────────────────────────────── */
+    .news-section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 2rem 0 1.25rem;
+    }
+    .news-section-label span {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #555;
+      white-space: nowrap;
+    }
+    .news-section-label::before,
+    .news-section-label::after { content: ''; flex: 1; height: 2px; background: #ddd; }
+    .news-section-label.green::before,
+    .news-section-label.green::after { background: var(--green); }
+
+    /* ── CARDS GRID ─────────────────────────────────────────────── */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .news-card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .news-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+    }
+    .card-top {
+      height: 5px;
+    }
+    .card-top.atp   { background: var(--blue); }
+    .card-top.wta   { background: var(--clay); }
+    .card-top.slam  { background: var(--green); }
+    .card-top.rival { background: var(--yellow); }
+
+    .card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+    .card-tag {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.6rem;
+    }
+    .card-tag.atp   { background: #e3eeff; color: var(--blue); }
+    .card-tag.wta   { background: #fdeee8; color: var(--clay); }
+    .card-tag.slam  { background: #e4f5ec; color: var(--green); }
+    .card-tag.rival { background: #f5f9d0; color: #5a6a00; }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #111;
+      line-height: 1.35;
+      margin: 0 0 0.6rem;
+      flex: 1;
+    }
+    .card-text {
+      font-size: 0.8rem;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+    .card-date {
+      font-size: 0.65rem;
+      color: #aaa;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: auto;
+    }
+
+    /* ── WIDE CARD ──────────────────────────────────────────────── */
+    .news-wide {
+      background: var(--dark);
+      border-radius: 16px;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .wide-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 0.5rem;
+    }
+    .wide-title {
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.3;
+      margin: 0 0 1rem;
+    }
+    .wide-text {
+      font-size: 0.85rem;
+      color: #aaa;
+      line-height: 1.7;
+    }
+    .wide-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .stat-box {
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .stat-box.yellow { background: var(--yellow); }
+    .stat-box.green  { background: var(--green); }
+    .stat-box.blue   { background: var(--blue); }
+    .stat-box.clay   { background: var(--clay); }
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #fff;
+      display: block;
+    }
+    .stat-box.yellow .stat-num { color: var(--dark); }
+    .stat-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.8);
+    }
+    .stat-box.yellow .stat-label { color: rgba(0,0,0,0.6); }
+
+    /* ── HEADLINES STRIP ────────────────────────────────────────── */
+    .news-headlines {
+      background: #fff;
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      margin-bottom: 2rem;
+    }
+    .headlines-title {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--yellow);
+      display: inline-block;
+    }
+    .headlines-list { list-style: none; padding: 0; margin: 0; }
+    .headlines-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.85rem;
+      color: #222;
+      font-weight: 500;
+    }
+    .headlines-list li:last-child { border-bottom: none; }
+    .hl-num {
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--yellow);
+      min-width: 1.5rem;
+      line-height: 1.3;
+    }
+
+    @media (max-width: 900px) {
+      .news-fullhero { height: 60vh; }
+      .news-grid { grid-template-columns: 1fr 1fr; }
+      .news-wide { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .news-grid { grid-template-columns: 1fr; }
+      .news-wrap { padding: 1rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -42,8 +391,8 @@
       <li><a href="quiz.html">Quiz 🎯</a></li>
     </ul>
     <div class="nav-actions">
-      <button class="search-btn" id="searchBtn" title="Search">&#128269;</button>
-      <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+      <button class="search-btn" id="searchBtn">&#128269;</button>
+      <button class="theme-toggle" id="themeToggle">🌙</button>
     </div>
   </nav>
   <div class="search-overlay" id="searchOverlay">
@@ -54,236 +403,166 @@
     </div>
   </div>
 
-  <!-- PAGE HERO -->
-  <section class="page-hero page-hero-news">
-    <div class="page-hero-content">
-      <span class="section-tag">Stay Updated</span>
-      <h1>Tennis News</h1>
-      <p>The latest stories from the world of tennis.</p>
+  <!-- HEADER -->
+  <div class="news-header">
+    <div class="news-header-top">
+      <span id="newsDate"></span>
+      <span>🎾 TennisFan News</span>
+      <span>2026 Season</span>
     </div>
-  </section>
+    <h1 class="news-title">Tennis<span>Fan</span> News</h1>
+    <p class="news-tagline">Your daily dose of tennis — ATP · WTA · Grand Slams · Rivalries</p>
+  </div>
 
-  <!-- NEWS FILTER -->
-  <section class="news-filter-bar">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="atp">ATP</button>
-    <button class="filter-btn" data-filter="wta">WTA</button>
-    <button class="filter-btn" data-filter="slam">Grand Slams</button>
-  </section>
+  <!-- BREAKING TICKER -->
+  <div class="news-ticker">
+    <span class="ticker-label">⚡ Breaking</span>
+    <div class="ticker-track">
+      <span>🎾 Alcaraz wins Australian Open 2026 — first Melbourne title</span>
+      <span>🏆 Sabalenka claims 3rd consecutive AO crown</span>
+      <span>🌍 Clay season begins — Alcaraz is top seed at Roland Garros</span>
+      <span>🔥 Djokovic confirms full clay schedule for 2026</span>
+      <span>💪 Swiatek on a mission to reclaim Paris throne</span>
+      <span>🎾 Alcaraz wins Australian Open 2026 — first Melbourne title</span>
+      <span>🏆 Sabalenka claims 3rd consecutive AO crown</span>
+      <span>🌍 Clay season begins — Alcaraz is top seed at Roland Garros</span>
+      <span>🔥 Djokovic confirms full clay schedule for 2026</span>
+      <span>💪 Swiatek on a mission to reclaim Paris throne</span>
+    </div>
+  </div>
 
-  <!-- NEWS GRID -->
-  <section class="section news-full-section">
-    <div class="news-full-grid">
+  <!-- MAIN CONTENT -->
+  <div class="news-wrap">
 
-      <!-- FEATURED -->
-      <article class="article-card article-featured" data-category="slam atp">
-        <div class="article-surface bar-blue"></div>
-        <div class="article-body">
-          <div class="article-meta">
-            <span class="article-cat cat-slam">Grand Slam</span>
-            <span class="article-date">January 26, 2025</span>
-          </div>
-          <h2>Sinner Wins Back-to-Back Australian Open Titles</h2>
-          <p>Jannik Sinner delivered a dominant performance to clinch his second consecutive Australian Open title. The Italian world number one defeated Alexander Zverev in straight sets, showcasing the relentless baseline power that has made him the most feared player on tour. With this victory, Sinner has now won three Grand Slam titles before his 24th birthday.</p>
-          <div class="share-btns">
-            <button class="share-btn share-x" onclick="shareArticle('x',this)">𝕏 Share</button>
-            <button class="share-btn share-wa" onclick="shareArticle('whatsapp',this)">💬 WhatsApp</button>
-            <button class="share-btn share-fb" onclick="shareArticle('facebook',this)">Facebook</button>
-          </div>
-          <div class="article-tags">
-            <span class="tag">Australian Open</span>
-            <span class="tag">Sinner</span>
-            <span class="tag">Hard Court</span>
-          </div>
+    <!-- HERO -->
+    <div class="news-fullhero">
+      <video autoplay muted loop playsinline class="news-fullhero-video">
+        <source src="https://assets.mixkit.co/videos/879/879-1080.mp4" type="video/mp4">
+        <source src="https://assets.mixkit.co/videos/876/876-1080.mp4" type="video/mp4">
+        <source src="https://assets.mixkit.co/videos/880/880-1080.mp4" type="video/mp4">
+      </video>
+      <div class="news-fullhero-overlay"></div>
+      <div class="news-fullhero-content">
+        <span class="hero-tag">Grand Slam · ATP</span>
+        <h2 class="news-fullhero-title">Alcaraz Eyes Third Roland Garros Title<br>as Clay Season Begins</h2>
+        <div class="news-fullhero-meta">By TennisFan Staff &nbsp;·&nbsp; March 30, 2026</div>
+        <div class="news-fullhero-quote">"I feel the best I have ever felt. Roland Garros is my dream."<br><cite>— Carlos Alcaraz, World No. 1</cite></div>
+      </div>
+    </div>
+
+    <!-- LATEST STORIES -->
+    <div class="news-section-label green"><span>Latest Stories</span></div>
+
+    <div class="news-grid">
+
+      <div class="news-card">
+        <div class="card-top atp"></div>
+        <div class="card-body">
+          <span class="card-tag atp">ATP</span>
+          <div class="card-title">Alcaraz Triumphs at Australian Open 2026 — First Melbourne Title</div>
+          <div class="card-text">Carlos Alcaraz claimed his first AO crown in stunning fashion, adding Melbourne to his Grand Slam collection. The Spaniard was untouchable throughout the fortnight.</div>
+          <div class="card-date">Jan 26, 2026</div>
         </div>
-      </article>
+      </div>
 
-      <!-- REGULAR ARTICLES -->
-      <article class="article-card" data-category="wta slam">
-        <div class="article-surface bar-blue"></div>
-        <div class="article-body">
-          <div class="article-meta">
-            <span class="article-cat cat-wta">WTA</span>
-            <span class="article-date">January 25, 2025</span>
-          </div>
-          <h3>Sabalenka Dominates Women's Draw in Melbourne</h3>
-          <p>Aryna Sabalenka claimed her third Australian Open title with a powerful display against Iga Swiatek in the final. The Belarusian's serve and aggressive groundstrokes proved too much for the world number two.</p>
-          <div class="share-btns">
-            <button class="share-btn share-x" onclick="shareArticle('x',this)">𝕏 Share</button>
-            <button class="share-btn share-wa" onclick="shareArticle('whatsapp',this)">💬 WhatsApp</button>
-            <button class="share-btn share-fb" onclick="shareArticle('facebook',this)">Facebook</button>
-          </div>
-          <div class="article-tags">
-            <span class="tag">Sabalenka</span>
-            <span class="tag">WTA</span>
-          </div>
+      <div class="news-card">
+        <div class="card-top wta"></div>
+        <div class="card-body">
+          <span class="card-tag wta">WTA</span>
+          <div class="card-title">Sabalenka Makes History — Three Consecutive Melbourne Crowns</div>
+          <div class="card-text">Aryna Sabalenka claimed her third consecutive Australian Open title in a breathtaking final against Rybakina. Her serve was simply unplayable throughout the fortnight.</div>
+          <div class="card-date">Jan 25, 2026</div>
         </div>
-      </article>
+      </div>
 
-      <article class="article-card" data-category="slam atp">
-        <div class="article-surface bar-clay"></div>
-        <div class="article-body">
-          <div class="article-meta">
-            <span class="article-cat cat-slam">Grand Slam</span>
-            <span class="article-date">June 8, 2025</span>
-          </div>
-          <h3>Alcaraz Reigns Supreme on Clay in Paris</h3>
-          <p>Carlos Alcaraz claimed his second Roland Garros title after an epic five-set battle against Jannik Sinner. The match lasted four hours and 22 minutes in what many are calling the greatest final in recent memory.</p>
-          <div class="share-btns">
-            <button class="share-btn share-x" onclick="shareArticle('x',this)">𝕏 Share</button>
-            <button class="share-btn share-wa" onclick="shareArticle('whatsapp',this)">💬 WhatsApp</button>
-            <button class="share-btn share-fb" onclick="shareArticle('facebook',this)">Facebook</button>
-          </div>
-          <div class="article-tags">
-            <span class="tag">Roland Garros</span>
-            <span class="tag">Alcaraz</span>
-            <span class="tag">Clay</span>
-          </div>
+      <div class="news-card">
+        <div class="card-top rival"></div>
+        <div class="card-body">
+          <span class="card-tag rival">Rivalry</span>
+          <div class="card-title">Alcaraz vs Sinner: Fifteen Meetings — One Still Leads</div>
+          <div class="card-text">With fifteen meetings and counting, the Alcaraz–Sinner rivalry leads 8–7. Every encounter feels like a grand final. This is the rivalry of a generation.</div>
+          <div class="card-date">Feb 10, 2026</div>
         </div>
-      </article>
+      </div>
 
-      <article class="article-card" data-category="wta slam">
-        <div class="article-surface bar-clay"></div>
-        <div class="article-body">
-          <div class="article-meta">
-            <span class="article-cat cat-wta">WTA</span>
-            <span class="article-date">June 7, 2025</span>
-          </div>
-          <h3>Swiatek Claims Fifth Roland Garros Crown</h3>
-          <p>Iga Swiatek continued her extraordinary dominance on clay, claiming her fifth Roland Garros title. The Polish star dropped only one set throughout the entire tournament, dismantling opponents with her signature heavy topspin.</p>
-          <div class="share-btns">
-            <button class="share-btn share-x" onclick="shareArticle('x',this)">𝕏 Share</button>
-            <button class="share-btn share-wa" onclick="shareArticle('whatsapp',this)">💬 WhatsApp</button>
-            <button class="share-btn share-fb" onclick="shareArticle('facebook',this)">Facebook</button>
-          </div>
-          <div class="article-tags">
-            <span class="tag">Swiatek</span>
-            <span class="tag">Clay</span>
-            <span class="tag">Roland Garros</span>
-          </div>
+      <div class="news-card">
+        <div class="card-top atp"></div>
+        <div class="card-body">
+          <span class="card-tag atp">ATP</span>
+          <div class="card-title">Djokovic: "The Fire Burns as Bright as Ever"</div>
+          <div class="card-text">At 38, Novak Djokovic refuses to yield. The 24-time Grand Slam champion confirms a full clay season schedule and believes more major titles are within reach.</div>
+          <div class="card-date">Mar 15, 2026</div>
         </div>
-      </article>
+      </div>
 
-      <article class="article-card" data-category="slam atp">
-        <div class="article-surface bar-green"></div>
-        <div class="article-body">
-          <div class="article-meta">
-            <span class="article-cat cat-slam">Grand Slam</span>
-            <span class="article-date">July 13, 2025</span>
-          </div>
-          <h3>Alcaraz Makes Wimbledon His Home — Third Title at The All England Club</h3>
-          <p>Carlos Alcaraz cemented his status as the King of Grass with a devastating straight-sets victory in the Wimbledon final. His ability to adapt to every surface has drawn comparisons to the greatest all-court players in history.</p>
-          <div class="share-btns">
-            <button class="share-btn share-x" onclick="shareArticle('x',this)">𝕏 Share</button>
-            <button class="share-btn share-wa" onclick="shareArticle('whatsapp',this)">💬 WhatsApp</button>
-            <button class="share-btn share-fb" onclick="shareArticle('facebook',this)">Facebook</button>
-          </div>
-          <div class="article-tags">
-            <span class="tag">Wimbledon</span>
-            <span class="tag">Alcaraz</span>
-            <span class="tag">Grass</span>
-          </div>
+      <div class="news-card">
+        <div class="card-top wta"></div>
+        <div class="card-body">
+          <span class="card-tag wta">WTA</span>
+          <div class="card-title">Swiatek Returns — And Clay Is Still Her Domain</div>
+          <div class="card-text">Five-time Roland Garros champion Iga Swiatek is back to her very best. The Polish star is determined to reclaim her Paris throne after the 2025 final defeat.</div>
+          <div class="card-date">Mar 25, 2026</div>
         </div>
-      </article>
+      </div>
 
-      <article class="article-card" data-category="atp">
-        <div class="article-surface bar-blue"></div>
-        <div class="article-body">
-          <div class="article-meta">
-            <span class="article-cat cat-atp">ATP</span>
-            <span class="article-date">November 15, 2025</span>
-          </div>
-          <h3>Sinner Ends 2025 as World Number One</h3>
-          <p>Jannik Sinner finished the 2025 season as the undisputed world number one after a remarkable year. The Italian took two Grand Slams and finished with the best win-loss record on tour, defeating Alcaraz in the ATP Finals final.</p>
-          <div class="share-btns">
-            <button class="share-btn share-x" onclick="shareArticle('x',this)">𝕏 Share</button>
-            <button class="share-btn share-wa" onclick="shareArticle('whatsapp',this)">💬 WhatsApp</button>
-            <button class="share-btn share-fb" onclick="shareArticle('facebook',this)">Facebook</button>
-          </div>
-          <div class="article-tags">
-            <span class="tag">Sinner</span>
-            <span class="tag">ATP Finals</span>
-            <span class="tag">Rankings</span>
-          </div>
+      <div class="news-card">
+        <div class="card-top wta"></div>
+        <div class="card-body">
+          <span class="card-tag wta">WTA</span>
+          <div class="card-title">Gauff: "I Will Win Roland Garros Before I Turn 25"</div>
+          <div class="card-text">Coco Gauff has made her intentions crystal clear. The American world number four is hell-bent on adding a French Open title to her US Open crown in 2026.</div>
+          <div class="card-date">Mar 12, 2026</div>
         </div>
-      </article>
-
-      <article class="article-card" data-category="wta">
-        <div class="article-surface bar-blue"></div>
-        <div class="article-body">
-          <div class="article-meta">
-            <span class="article-cat cat-wta">WTA</span>
-            <span class="article-date">September 6, 2025</span>
-          </div>
-          <h3>Sabalenka Wins US Open for Third Consecutive Year</h3>
-          <p>Aryna Sabalenka made history by winning the US Open for the third consecutive year. The Belarusian powerhouse defeated Coco Gauff in a thrilling three-set final at Arthur Ashe Stadium.</p>
-          <div class="share-btns">
-            <button class="share-btn share-x" onclick="shareArticle('x',this)">𝕏 Share</button>
-            <button class="share-btn share-wa" onclick="shareArticle('whatsapp',this)">💬 WhatsApp</button>
-            <button class="share-btn share-fb" onclick="shareArticle('facebook',this)">Facebook</button>
-          </div>
-          <div class="article-tags">
-            <span class="tag">Sabalenka</span>
-            <span class="tag">US Open</span>
-            <span class="tag">WTA</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="article-card" data-category="atp">
-        <div class="article-surface bar-blue"></div>
-        <div class="article-body">
-          <div class="article-meta">
-            <span class="article-cat cat-atp">ATP</span>
-            <span class="article-date">September 7, 2025</span>
-          </div>
-          <h3>Sinner Wins US Open — His Second Major of 2025</h3>
-          <p>Jannik Sinner completed a remarkable year by claiming the US Open title, defeating Taylor Fritz in four sets. This was Sinner's second Grand Slam of the year after his Australian Open success in January.</p>
-          <div class="share-btns">
-            <button class="share-btn share-x" onclick="shareArticle('x',this)">𝕏 Share</button>
-            <button class="share-btn share-wa" onclick="shareArticle('whatsapp',this)">💬 WhatsApp</button>
-            <button class="share-btn share-fb" onclick="shareArticle('facebook',this)">Facebook</button>
-          </div>
-          <div class="article-tags">
-            <span class="tag">Sinner</span>
-            <span class="tag">US Open</span>
-            <span class="tag">Hard Court</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="article-card" data-category="atp wta">
-        <div class="article-surface bar-yellow"></div>
-        <div class="article-body">
-          <div class="article-meta">
-            <span class="article-cat cat-atp">General</span>
-            <span class="article-date">December 1, 2025</span>
-          </div>
-          <h3>Tennis in 2025: A Year of Young Dominance</h3>
-          <p>Looking back at an incredible year in tennis. Sinner and Alcaraz split the four Grand Slams between them for the second consecutive year, while Sabalenka dominated the WTA circuit. The Next Gen has officially arrived — and the Big Three era has given way to something equally spectacular.</p>
-          <div class="share-btns">
-            <button class="share-btn share-x" onclick="shareArticle('x',this)">𝕏 Share</button>
-            <button class="share-btn share-wa" onclick="shareArticle('whatsapp',this)">💬 WhatsApp</button>
-            <button class="share-btn share-fb" onclick="shareArticle('facebook',this)">Facebook</button>
-          </div>
-          <div class="article-tags">
-            <span class="tag">2025 Review</span>
-            <span class="tag">ATP</span>
-            <span class="tag">WTA</span>
-          </div>
-        </div>
-      </article>
+      </div>
 
     </div>
-  </section>
+
+    <!-- GOAT DEBATE -->
+    <div class="news-wide">
+      <div>
+        <div class="wide-label">The Great Debate</div>
+        <div class="wide-title">Does Djokovic Still Lead the GOAT Race — Or Has the Throne Already Changed Hands?</div>
+        <div class="wide-text">With 24 Grand Slam titles, Novak Djokovic remains the statistical leader. Yet with Alcaraz and Sinner accumulating majors at a breathtaking pace, the question is unavoidable: how long before the next generation rewrites the record books entirely? Alcaraz has won multiple Grand Slams before his 23rd birthday — a pace that eclipses even Djokovic's early trajectory. Tennis is witnessing a changing of the guard.</div>
+      </div>
+      <div class="wide-stats">
+        <div class="stat-box yellow">
+          <span class="stat-num">24</span>
+          <span class="stat-label">Djokovic Slams</span>
+        </div>
+        <div class="stat-box clay">
+          <span class="stat-num">14</span>
+          <span class="stat-label">Nadal RG Titles</span>
+        </div>
+        <div class="stat-box green">
+          <span class="stat-num">8</span>
+          <span class="stat-label">Federer Wimbledons</span>
+        </div>
+        <div class="stat-box blue">
+          <span class="stat-num">6+</span>
+          <span class="stat-label">Alcaraz Slams</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TODAY'S HEADLINES -->
+    <div class="news-headlines">
+      <div class="headlines-title">📋 Today's Headlines</div>
+      <ul class="headlines-list">
+        <li><span class="hl-num">1</span>Alcaraz confirmed as Roland Garros top seed for 2026</li>
+        <li><span class="hl-num">2</span>Alcaraz wins AO 2026 — first Melbourne title</li>
+        <li><span class="hl-num">3</span>Sabalenka makes history with 3rd consecutive Melbourne crown</li>
+        <li><span class="hl-num">4</span>Djokovic confirms full clay season — targeting Roland Garros</li>
+        <li><span class="hl-num">5</span>Swiatek eyes Roland Garros revenge after 2025 final defeat</li>
+        <li><span class="hl-num">6</span>Wimbledon 2026 tickets — record demand reported</li>
+      </ul>
+    </div>
+
+  </div>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-brand">
-        <span class="logo">🎾 TennisFan</span>
-        <p>Your home for everything tennis.</p>
-      </div>
+      <div class="footer-brand"><span class="logo">🎾 TennisFan</span><p>Your home for everything tennis.</p></div>
       <div class="footer-links">
         <a href="index.html">Home</a>
         <a href="players.html">Players</a>
@@ -291,11 +570,245 @@
         <a href="news.html">News</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 TennisFan. Made with 🎾 passion.</p>
-    </div>
+    <div class="footer-bottom"><p>&copy; 2026 TennisFan. Made with 🎾 passion.</p></div>
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const now = new Date();
+    document.getElementById('newsDate').textContent = months[now.getMonth()] + ' ' + now.getDate() + ', ' + now.getFullYear();
+  </script>
+  <script>
+  // ── TENNIS COURT ANIMATION (removed) ───────────────────────────
+  (function(){
+    const canvas = document.getElementById('tennisAnim'); if(!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    function resize(){
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Ball state
+    const ball = { x:0, y:0, vx:0, vy:0, r:8, trail:[] };
+    // Players
+    const p1 = { x:0, y:0, w:18, h:60, vy:2.2, dir:1, color:'#c8e000' };
+    const p2 = { x:0, y:0, w:18, h:60, vy:1.8, dir:-1, color:'#1565c0' };
+    // Scores
+    let score1=0, score2=0;
+    let hitsP1=true;
+
+    function init(){
+      const W=canvas.width, H=canvas.height;
+      ball.x = W/2; ball.y = H/2;
+      ball.vx = (Math.random()>0.5?1:-1)*5;
+      ball.vy = (Math.random()-0.5)*4;
+      p1.x = 55; p1.y = H/2 - p1.h/2;
+      p2.x = W - 55 - p2.w; p2.y = H/2 - p2.h/2;
+    }
+    init();
+
+    function drawCourt(){
+      const W=canvas.width, H=canvas.height;
+      // Court surface (clay)
+      ctx.fillStyle='#c1440e';
+      ctx.fillRect(0,0,W,H);
+
+      // Court lines
+      ctx.strokeStyle='rgba(255,255,255,0.55)';
+      ctx.lineWidth=2;
+
+      // Outer boundary
+      const mx=30, my=20;
+      ctx.strokeRect(mx, my, W-mx*2, H-my*2);
+
+      // Service boxes — vertical centre line
+      ctx.beginPath();
+      ctx.moveTo(W/2, my); ctx.lineTo(W/2, H-my);
+      ctx.stroke();
+
+      // Service line left & right
+      const sl = mx + (W-mx*2)*0.22;
+      const sr = W - sl;
+      ctx.beginPath();
+      ctx.moveTo(sl, my); ctx.lineTo(sl, H-my);
+      ctx.moveTo(sr, my); ctx.lineTo(sr, H-my);
+      ctx.stroke();
+
+      // Horizontal centre line (between service boxes)
+      ctx.beginPath();
+      ctx.moveTo(sl, H/2); ctx.lineTo(sr, H/2);
+      ctx.stroke();
+
+      // NET
+      ctx.strokeStyle='rgba(255,255,255,0.9)';
+      ctx.lineWidth=3;
+      ctx.beginPath();
+      ctx.moveTo(W/2, my-5); ctx.lineTo(W/2, H-my+5);
+      ctx.stroke();
+      // net posts
+      ctx.fillStyle='#fff';
+      ctx.fillRect(W/2-4, my-8, 8, 8);
+      ctx.fillRect(W/2-4, H-my, 8, 8);
+    }
+
+    function drawPlayer(p, label){
+      const W=canvas.width, H=canvas.height;
+      // Shadow
+      ctx.fillStyle='rgba(0,0,0,0.2)';
+      ctx.beginPath();
+      ctx.ellipse(p.x+p.w/2, p.y+p.h+4, p.w*0.7, 5, 0, 0, Math.PI*2);
+      ctx.fill();
+
+      // Body
+      ctx.fillStyle=p.color;
+      ctx.beginPath();
+      ctx.roundRect(p.x, p.y+18, p.w, p.h-18, 4);
+      ctx.fill();
+
+      // Head
+      ctx.fillStyle='#f5cba7';
+      ctx.beginPath();
+      ctx.arc(p.x+p.w/2, p.y+12, 11, 0, Math.PI*2);
+      ctx.fill();
+
+      // Racket arm
+      ctx.strokeStyle=p.color;
+      ctx.lineWidth=4;
+      ctx.lineCap='round';
+      const armX = label==='L' ? p.x+p.w+2 : p.x-2;
+      const armY = p.y+30;
+      ctx.beginPath();
+      ctx.moveTo(p.x+p.w/2, armY);
+      ctx.lineTo(armX, armY);
+      ctx.stroke();
+
+      // Racket head
+      ctx.strokeStyle='#fff';
+      ctx.lineWidth=2.5;
+      ctx.beginPath();
+      ctx.ellipse(armX+(label==='L'?8:-8), armY, 8, 12, 0.3, 0, Math.PI*2);
+      ctx.stroke();
+
+      // Label
+      ctx.fillStyle='rgba(255,255,255,0.9)';
+      ctx.font='bold 11px Inter,sans-serif';
+      ctx.textAlign='center';
+      ctx.fillText(label==='L'?'P1':'P2', p.x+p.w/2, p.y+p.h+18);
+    }
+
+    function drawBall(){
+      // Trail
+      ball.trail.forEach((t,i)=>{
+        ctx.globalAlpha = (i/ball.trail.length)*0.4;
+        ctx.fillStyle='#c8e000';
+        ctx.beginPath();
+        ctx.arc(t.x, t.y, ball.r*(i/ball.trail.length)*0.8, 0, Math.PI*2);
+        ctx.fill();
+      });
+      ctx.globalAlpha=1;
+
+      // Ball glow
+      const grd=ctx.createRadialGradient(ball.x-2,ball.y-2,1,ball.x,ball.y,ball.r+4);
+      grd.addColorStop(0,'rgba(200,224,0,0.4)');
+      grd.addColorStop(1,'rgba(200,224,0,0)');
+      ctx.fillStyle=grd;
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.r+4, 0, Math.PI*2);
+      ctx.fill();
+
+      // Ball
+      ctx.fillStyle='#c8e000';
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI*2);
+      ctx.fill();
+      // Seam
+      ctx.strokeStyle='rgba(255,255,255,0.6)';
+      ctx.lineWidth=1.5;
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.r, 0.3, Math.PI-0.3);
+      ctx.stroke();
+    }
+
+    function drawScore(){
+      const W=canvas.width;
+      ctx.fillStyle='rgba(0,0,0,0.45)';
+      ctx.beginPath();
+      ctx.roundRect(W/2-60,8,120,30,8);
+      ctx.fill();
+      ctx.fillStyle='#c8e000';
+      ctx.font='bold 16px Inter,sans-serif';
+      ctx.textAlign='center';
+      ctx.fillText(score1+' — '+score2, W/2, 28);
+    }
+
+    function update(){
+      const W=canvas.width, H=canvas.height;
+      const my=20;
+
+      // Move ball
+      ball.trail.push({x:ball.x, y:ball.y});
+      if(ball.trail.length>12) ball.trail.shift();
+      ball.x += ball.vx;
+      ball.y += ball.vy;
+
+      // Bounce top/bottom
+      if(ball.y - ball.r < my){ ball.y=my+ball.r; ball.vy=Math.abs(ball.vy); }
+      if(ball.y + ball.r > H-my){ ball.y=H-my-ball.r; ball.vy=-Math.abs(ball.vy); }
+
+      // AI players track ball
+      const mid1 = p1.y + p1.h/2;
+      const mid2 = p2.y + p2.h/2;
+      if(mid1 < ball.y-2) p1.y += 3.5;
+      else if(mid1 > ball.y+2) p1.y -= 3.5;
+      if(mid2 < ball.y-2) p2.y += 3.5;
+      else if(mid2 > ball.y+2) p2.y -= 3.5;
+      p1.y = Math.max(my, Math.min(H-my-p1.h, p1.y));
+      p2.y = Math.max(my, Math.min(H-my-p2.h, p2.y));
+
+      // Paddle collisions
+      if(ball.vx<0 && ball.x-ball.r < p1.x+p1.w && ball.x+ball.r > p1.x
+         && ball.y > p1.y && ball.y < p1.y+p1.h){
+        ball.vx = Math.abs(ball.vx)*1.05;
+        ball.vy += (ball.y-(p1.y+p1.h/2))*0.12;
+        ball.vx = Math.min(ball.vx, 9);
+        hitsP1=false;
+      }
+      if(ball.vx>0 && ball.x+ball.r > p2.x && ball.x-ball.r < p2.x+p2.w
+         && ball.y > p2.y && ball.y < p2.y+p2.h){
+        ball.vx = -Math.abs(ball.vx)*1.05;
+        ball.vy += (ball.y-(p2.y+p2.h/2))*0.12;
+        ball.vx = Math.max(ball.vx, -9);
+        hitsP1=true;
+      }
+
+      // Out of bounds — score & reset
+      if(ball.x < 0){ score2++; resetBall(W,H); }
+      if(ball.x > W){ score1++; resetBall(W,H); }
+    }
+
+    function resetBall(W,H){
+      ball.x=W/2; ball.y=H/2; ball.trail=[];
+      ball.vx=(Math.random()>0.5?1:-1)*(4+Math.random()*2);
+      ball.vy=(Math.random()-0.5)*4;
+      if(score1>9||score2>9){ score1=0; score2=0; }
+    }
+
+    function frame(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      drawCourt();
+      drawPlayer(p1,'L');
+      drawPlayer(p2,'R');
+      drawBall();
+      drawScore();
+      update();
+      requestAnimationFrame(frame);
+    }
+    frame();
+  })();
+  </script>
 </body>
 </html>
