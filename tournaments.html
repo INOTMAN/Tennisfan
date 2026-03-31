@@ -347,10 +347,15 @@
     const API_KEY = '2ea364bf4cb3456bb78c7fc718c624f10fec634aa601e257bce5bbf69b92e0dc';
 
     function getDateRange(daysAhead) {
+      const fmt = d => {
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        return `${y}-${m}-${day}`;
+      };
       const today = new Date();
       const end = new Date();
       end.setDate(today.getDate() + (daysAhead || 0));
-      const fmt = d => d.toISOString().split('T')[0];
       return { from: fmt(today), to: fmt(end) };
     }
 
@@ -366,7 +371,15 @@
       const p1 = m.event_first_player || m.home_name || '?';
       const p2 = m.event_second_player || m.away_name || '?';
       const score = m.event_final_result || 'vs';
-      const time = m.event_date ? m.event_date.split(' ')[1] || '—' : '—';
+      let time = '—';
+      if (m.event_time) {
+        time = m.event_time.substring(0, 5);
+      } else if (m.event_date && m.event_date.includes(' ')) {
+        time = m.event_date.split(' ')[1].substring(0, 5);
+      } else if (m.event_timestamp) {
+        const d = new Date(m.event_timestamp * 1000);
+        time = d.toUTCString().substring(17, 22);
+      }
       const round = m.event_round || '—';
       return `<tr>
         <td class="td-time">${time}</td>
@@ -433,6 +446,7 @@
       try {
         const res = await fetch(`https://apiv2.allsportsapi.com/tennis/?met=Fixtures&APIkey=${API_KEY}&from=${from}&to=${to}`);
         const data = await res.json();
+        if (data.result && data.result[0]) console.log('Match fields:', data.result[0]);
         renderMatches(data);
       } catch (e) {
         wrap.innerHTML = '<div class="match-empty">Could not load matches. Try again later.</div>';
