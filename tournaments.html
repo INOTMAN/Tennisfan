@@ -46,6 +46,7 @@
   <!-- JUMP NAV -->
   <nav class="jump-nav" id="jumpNav">
     <a href="#calendar">2026 Calendar</a>
+    <a href="#matches">Matches</a>
     <a href="#melbourne">Melbourne</a>
     <a href="#roland-garros">Roland Garros</a>
     <a href="#wimbledon">Wimbledon</a>
@@ -99,6 +100,24 @@
         </div>
         <span class="cal-badge badge-hard">Hard</span>
       </div>
+    </div>
+  </section>
+
+  <!-- LIVE MATCHES -->
+  <section class="section calendar-section" id="matches">
+    <div class="section-header">
+      <span class="section-tag">Live Draw</span>
+      <h2>Player Matches</h2>
+      <p>All matches — updated live.</p>
+    </div>
+    <div class="schedule-controls">
+      <button class="sched-btn active" data-days="0">Today</button>
+      <button class="sched-btn" data-days="1">Tomorrow</button>
+      <button class="sched-btn" data-days="3">Next 3 Days</button>
+      <button class="sched-btn" data-days="7">This Week</button>
+    </div>
+    <div id="matchSchedule" class="match-schedule-wrap">
+      <div class="match-loading">Loading matches...</div>
     </div>
   </section>
 
@@ -324,10 +343,117 @@
     </div>
   </div>
 
+  <script>
+    const API_KEY = '2ea364bf4cb3456bb78c7fc718c624f10fec634aa601e257bce5bbf69b92e0dc';
+
+    function getDateRange(daysAhead) {
+      const today = new Date();
+      const end = new Date();
+      end.setDate(today.getDate() + (daysAhead || 0));
+      const fmt = d => d.toISOString().split('T')[0];
+      return { from: fmt(today), to: fmt(end) };
+    }
+
+    function statusLabel(status) {
+      if (!status) return '';
+      const s = status.toLowerCase();
+      if (s.includes('live') || s.includes('progress')) return '<span class="ms-live">LIVE</span>';
+      if (s.includes('finish') || s.includes('ended')) return '<span class="ms-done">FT</span>';
+      return '<span class="ms-upcoming">Upcoming</span>';
+    }
+
+    function tableRow(m) {
+      const p1 = m.event_first_player || m.home_name || '?';
+      const p2 = m.event_second_player || m.away_name || '?';
+      const score = m.event_final_result || 'vs';
+      const time = m.event_date ? m.event_date.split(' ')[1] || '—' : '—';
+      const round = m.event_round || '—';
+      return `<tr>
+        <td class="td-time">${time}</td>
+        <td class="td-player td-p1">${p1}</td>
+        <td class="td-score">${score}</td>
+        <td class="td-player td-p2">${p2}</td>
+        <td class="td-round">${round}</td>
+        <td class="td-status">${statusLabel(m.event_status)}</td>
+      </tr>`;
+    }
+
+    function renderMatches(data) {
+      const wrap = document.getElementById('matchSchedule');
+      if (!data || !data.result || data.result.length === 0) {
+        wrap.innerHTML = '<div class="match-empty">No matches scheduled for this period.</div>';
+        return;
+      }
+      const groups = {};
+      data.result.forEach(m => {
+        const comp = m.event_competition || m.league_name || 'Other';
+        const isQual = /qualif/i.test(comp);
+        const isDoubles = /doubles/i.test(comp) || (m.event_first_player || '').includes('/');
+        const baseName = comp
+          .replace(/[\s\-–]+qualif[^,]*/i, '')
+          .replace(/[\s\-–]+doubles/i, '')
+          .trim();
+        if (!groups[baseName]) groups[baseName] = { singles: [], doubles: [], qualifying: [], surface: m.event_ground || '' };
+        if (isQual) groups[baseName].qualifying.push(m);
+        else if (isDoubles) groups[baseName].doubles.push(m);
+        else groups[baseName].singles.push(m);
+      });
+
+      let html = '';
+      for (const [tournament, { singles, doubles, qualifying, surface }] of Object.entries(groups)) {
+        const surf = surface ? ` · ${surface}` : '';
+        html += `<div class="ms-group"><div class="ms-tournament-name">${tournament}${surf}</div>`;
+        if (singles.length > 0) {
+          html += `<div class="ms-table-wrap ms-table-main"><div class="ms-table-title">🎾 Singles</div>
+            <table class="ms-table"><thead><tr><th>Time</th><th>Player 1</th><th>Score</th><th>Player 2</th><th>Round</th><th>Status</th></tr></thead><tbody>`;
+          singles.forEach(m => { html += tableRow(m); });
+          html += `</tbody></table></div>`;
+        }
+        if (doubles.length > 0) {
+          html += `<div class="ms-table-wrap ms-table-doubles"><div class="ms-table-title">🤝 Doubles</div>
+            <table class="ms-table"><thead><tr><th>Time</th><th>Pair 1</th><th>Score</th><th>Pair 2</th><th>Round</th><th>Status</th></tr></thead><tbody>`;
+          doubles.forEach(m => { html += tableRow(m); });
+          html += `</tbody></table></div>`;
+        }
+        if (qualifying.length > 0) {
+          html += `<div class="ms-table-wrap ms-table-qual"><div class="ms-table-title">⚡ Qualification</div>
+            <table class="ms-table"><thead><tr><th>Time</th><th>Player 1</th><th>Score</th><th>Player 2</th><th>Round</th><th>Status</th></tr></thead><tbody>`;
+          qualifying.forEach(m => { html += tableRow(m); });
+          html += `</tbody></table></div>`;
+        }
+        html += `</div>`;
+      }
+      wrap.innerHTML = html;
+    }
+
+    async function loadMatches(daysAhead) {
+      const wrap = document.getElementById('matchSchedule');
+      wrap.innerHTML = '<div class="match-loading">Loading matches...</div>';
+      const { from, to } = getDateRange(daysAhead);
+      try {
+        const res = await fetch(`https://apiv2.allsportsapi.com/tennis/?met=Fixtures&APIkey=${API_KEY}&from=${from}&to=${to}`);
+        const data = await res.json();
+        renderMatches(data);
+      } catch (e) {
+        wrap.innerHTML = '<div class="match-empty">Could not load matches. Try again later.</div>';
+      }
+    }
+
+    document.querySelectorAll('.sched-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.sched-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        loadMatches(parseInt(btn.dataset.days));
+      });
+    });
+
+    loadMatches(0);
+  </script>
+
   <script src="script.js"></script>
   <script>
     const jumpLinks = document.querySelectorAll('.jump-nav a');
-    const sections = ['calendar','melbourne','roland-garros','wimbledon','us-open'].map(id => document.getElementById(id));
+    const sections = ['calendar','matches','melbourne','roland-garros','wimbledon','us-open'].map(id => document.getElementById(id));
     window.addEventListener('scroll', () => {
       let current = '';
       sections.forEach(sec => {

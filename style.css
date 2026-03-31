@@ -1895,3 +1895,237 @@ body.light .nav-links a.active { color: var(--yellow); }
   border-color: #2ecc71;
   background: rgba(46,204,113,0.08);
 }
+
+/* ── LIVE CALENDAR ── */
+.live-calendar-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  margin-top: 2rem;
+}
+
+/* ── MATCH SCHEDULE ── */
+.schedule-controls {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.sched-btn {
+  padding: 0.45rem 1.2rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  background: transparent;
+  color: var(--text-muted, #aaa);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.sched-btn:hover, .sched-btn.active {
+  background: #2ecc71;
+  border-color: #2ecc71;
+  color: #000;
+}
+.match-schedule-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.match-loading, .match-empty {
+  text-align: center;
+  color: var(--text-muted, #aaa);
+  padding: 3rem;
+  font-size: 1rem;
+}
+.ms-group {
+  background: rgba(255,255,255,0.04);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.ms-tournament-name {
+  background: rgba(46,204,113,0.12);
+  color: #2ecc71;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.6rem 1.2rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.ms-match {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.ms-match:last-child { border-bottom: none; }
+.ms-time {
+  font-size: 0.8rem;
+  color: var(--text-muted, #aaa);
+  min-width: 50px;
+}
+.ms-players {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.ms-player {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.ms-vs {
+  color: var(--text-muted, #aaa);
+  font-size: 0.8rem;
+}
+.ms-score {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  min-width: 60px;
+  text-align: center;
+}
+.ms-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.ms-round {
+  font-size: 0.75rem;
+  color: var(--text-muted, #aaa);
+  background: rgba(255,255,255,0.07);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+.ms-live {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #e74c3c;
+  background: rgba(231,76,60,0.15);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  animation: pulse 1.5s infinite;
+}
+.ms-done {
+  font-size: 0.75rem;
+  color: #aaa;
+  background: rgba(255,255,255,0.07);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+.ms-upcoming {
+  font-size: 0.75rem;
+  color: #2ecc71;
+  background: rgba(46,204,113,0.12);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.ms-sub-group {
+  margin: 0.5rem 0.75rem 0.75rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.ms-sub-main {
+  border: 2px solid rgba(46,204,113,0.5);
+}
+.ms-sub-qual {
+  border: 2px solid rgba(241,196,15,0.5);
+}
+.ms-section-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.55rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.ms-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  opacity: 0.3;
+}
+.ms-label-main {
+  background: rgba(46,204,113,0.12);
+  color: #2ecc71;
+}
+.ms-label-main::after { background: #2ecc71; }
+.ms-label-qual {
+  background: rgba(241,196,15,0.12);
+  color: #f1c40f;
+}
+.ms-label-qual::after { background: #f1c40f; }
+.ms-score-val {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* ── MATCH TABLES ── */
+.ms-table-wrap {
+  margin: 0.75rem;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+.ms-table-main { border-color: rgba(46,204,113,0.4); }
+.ms-table-qual { border-color: rgba(241,196,15,0.4); }
+
+.ms-table-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.55rem 1rem;
+}
+.ms-table-main .ms-table-title { background: rgba(46,204,113,0.15); color: #2ecc71; }
+.ms-table-qual .ms-table-title { background: rgba(241,196,15,0.15); color: #f1c40f; }
+
+.ms-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+.ms-table thead tr {
+  background: rgba(255,255,255,0.04);
+}
+.ms-table th {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted, #aaa);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.ms-table tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.15s;
+}
+.ms-table tbody tr:last-child { border-bottom: none; }
+.ms-table tbody tr:hover { background: rgba(255,255,255,0.04); }
+.ms-table td { padding: 0.6rem 0.75rem; }
+.td-time { color: var(--text-muted, #aaa); font-size: 0.8rem; white-space: nowrap; }
+.td-player { font-weight: 600; }
+.td-p1 { text-align: right; }
+.td-p2 { text-align: left; }
+.td-score { text-align: center; font-weight: 700; color: #fff; white-space: nowrap; padding: 0 1rem; }
+.td-round { color: var(--text-muted, #aaa); font-size: 0.8rem; }
+.td-status { white-space: nowrap; }
+
+.ms-table-doubles { border-color: rgba(52,152,219,0.4); }
+.ms-table-doubles .ms-table-title { background: rgba(52,152,219,0.15); color: #3498db; }
