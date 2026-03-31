@@ -3,7 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TennisFan — Tournaments</title>
+  <title>Grand Slam Tournaments 2026 — Schedule, Draw & Results | TennisFan</title>
+  <meta name="description" content="2026 Grand Slam calendar, live match draws, tournament profiles for Australian Open, Roland Garros, Wimbledon and US Open. Singles, Doubles and Qualification matches." />
+  <meta name="keywords" content="Grand Slam 2026, Australian Open 2026, Roland Garros 2026, Wimbledon 2026, US Open 2026, tennis draw, tennis schedule, tennis results, tennis calendar" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://inotman.github.io/Tennisfan/tournaments.html" />
+  <meta property="og:title" content="Grand Slam Tournaments 2026 — Schedule & Draw | TennisFan" />
+  <meta property="og:description" content="2026 Grand Slam calendar and live match draws. Australian Open, Roland Garros, Wimbledon, US Open." />
+  <meta property="og:url" content="https://inotman.github.io/Tennisfan/tournaments.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Grand Slam Tournaments 2026 — Schedule & Draw" />
+  <meta name="twitter:description" content="2026 Grand Slam calendar and live match draws for all 4 Grand Slams." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
@@ -343,8 +354,22 @@
     </div>
   </div>
 
+  <!-- PLAYER MODAL -->
+  <div class="player-modal-overlay" id="playerModal">
+    <div class="player-modal">
+      <div class="player-modal-header">
+        <h2 id="playerModalName"></h2>
+        <button class="player-modal-close" onclick="closePlayerModal()">&times;</button>
+      </div>
+      <div class="player-modal-body" id="playerModalBody">
+        <div class="match-loading">Loading matches...</div>
+      </div>
+    </div>
+  </div>
+
   <script>
     const API_KEY = '2ea364bf4cb3456bb78c7fc718c624f10fec634aa601e257bce5bbf69b92e0dc';
+    let allMatches = [];
 
     function getDateRange(daysAhead) {
       const fmt = d => {
@@ -383,9 +408,9 @@
       const round = m.event_round || '—';
       return `<tr>
         <td class="td-time">${time}</td>
-        <td class="td-player td-p1">${p1}</td>
+        <td class="td-player td-p1"><span class="player-link" onclick="openPlayerModal('${p1.replace(/'/g,"\\'")}')">  ${p1}</span></td>
         <td class="td-score">${score}</td>
-        <td class="td-player td-p2">${p2}</td>
+        <td class="td-player td-p2"><span class="player-link" onclick="openPlayerModal('${p2.replace(/'/g,"\\'")}')">  ${p2}</span></td>
         <td class="td-round">${round}</td>
         <td class="td-status">${statusLabel(m.event_status)}</td>
       </tr>`;
@@ -446,7 +471,7 @@
       try {
         const res = await fetch(`https://apiv2.allsportsapi.com/tennis/?met=Fixtures&APIkey=${API_KEY}&from=${from}&to=${to}`);
         const data = await res.json();
-        if (data.result && data.result[0]) console.log('Match fields:', data.result[0]);
+        if (data.result) allMatches = data.result;
         renderMatches(data);
       } catch (e) {
         wrap.innerHTML = '<div class="match-empty">Could not load matches. Try again later.</div>';
@@ -462,6 +487,80 @@
     });
 
     loadMatches(0);
+
+    async function openPlayerModal(playerName) {
+      document.getElementById('playerModalName').textContent = playerName;
+      document.getElementById('playerModalBody').innerHTML = '<div class="match-loading">Loading past matches...</div>';
+      document.getElementById('playerModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      const fmt = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      const today = new Date();
+      const past = new Date();
+      past.setDate(today.getDate() - 14);
+
+      try {
+        const url = `https://apiv2.allsportsapi.com/tennis/?met=Fixtures&APIkey=${API_KEY}&from=${fmt(past)}&to=${fmt(today)}`;
+        const res = await fetch(url);
+        const text = await res.text();
+        const data = JSON.parse(text);
+        console.log('Player API response:', data);
+
+        if (!data.result) {
+          document.getElementById('playerModalBody').innerHTML = `<div class="match-empty">API error: ${JSON.stringify(data)}</div>`;
+          return;
+        }
+
+        const lastName = playerName.split(' ').pop().toLowerCase();
+        const matches = data.result.filter(m => {
+          const p1 = (m.event_first_player || '').toLowerCase();
+          const p2 = (m.event_second_player || '').toLowerCase();
+          return p1.includes(lastName) || p2.includes(lastName);
+        }).filter(m => {
+          // Only finished matches
+          const s = (m.event_status || '').toLowerCase();
+          return s.includes('finish') || s.includes('ended') || s.includes('ft') || m.event_final_result;
+        });
+
+        if (matches.length === 0) {
+          document.getElementById('playerModalBody').innerHTML = '<div class="match-empty">No past matches found for this player.</div>';
+          return;
+        }
+
+        let html = `<p style="color:#aaa;font-size:0.85rem;margin-bottom:1rem;">Last 3 months — ${matches.length} match(es) found</p>`;
+        html += `<table class="ms-table"><thead><tr><th>Date</th><th>Tournament</th><th>Player 1</th><th>Score</th><th>Player 2</th><th>Status</th></tr></thead><tbody>`;
+        matches.reverse().forEach(m => {
+          const date = m.event_date ? m.event_date.split(' ')[0] : '—';
+          const tournament = (m.event_competition || '—').replace(/ATP - (SINGLES|DOUBLES): |WTA - (SINGLES|DOUBLES): /gi, '');
+          const p1 = m.event_first_player || '?';
+          const p2 = m.event_second_player || '?';
+          const score = m.event_final_result || '—';
+          html += `<tr>
+            <td class="td-time">${date}</td>
+            <td class="td-round">${tournament}</td>
+            <td class="td-player td-p1">${p1}</td>
+            <td class="td-score">${score}</td>
+            <td class="td-player td-p2">${p2}</td>
+            <td class="td-status">${statusLabel(m.event_status)}</td>
+          </tr>`;
+        });
+        html += `</tbody></table>`;
+        document.getElementById('playerModalBody').innerHTML = html;
+
+      } catch(e) {
+        console.error('Player modal error:', e);
+        document.getElementById('playerModalBody').innerHTML = `<div class="match-empty">Error: ${e.message}</div>`;
+      }
+    }
+
+    function closePlayerModal() {
+      document.getElementById('playerModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('playerModal').addEventListener('click', function(e) {
+      if (e.target === this) closePlayerModal();
+    });
   </script>
 
   <script src="script.js"></script>
